@@ -1,16 +1,18 @@
-
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
 # Text to speech
 #tts:
 #  - platform: google_translate
-  
+
 homeassistant:
   packages: !include_dir_named packages
 
 lovelace:
   mode: yaml
+  resources:
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
 
 group: !include groups.yaml
 automation: !include automations.yaml

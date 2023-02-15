@@ -1,6 +1,3 @@
-resources:
-  - type: js
-    url: /local/zha-network-card.js
 title: Home
 views:
   - theme: Backend-selected
