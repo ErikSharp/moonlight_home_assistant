@@ -1,0 +1,167 @@
+- id: '1673271904911'
+  name: Lights on
+  entities:
+    switch.switch_4:
+      friendly_name: Switch 4
+      state: unavailable
+    light.utility:
+      supported_color_modes:
+      - xy
+      off_with_transition: false
+      off_brightness:
+      friendly_name: lights.utility Light
+      supported_features: 40
+      color_mode: xy
+      brightness: 254
+      hs_color:
+      - 225.176
+      - 100
+      rgb_color:
+      - 0
+      - 63
+      - 255
+      xy_color:
+      - 0
+      - 0
+      state: 'on'
+    light.galley:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      color_mode: xy
+      brightness: 254
+      off_with_transition: false
+      off_brightness:
+      friendly_name: lights.galley Light
+      supported_features: 40
+      state: 'on'
+    light.dinette:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      color_mode: xy
+      brightness: 254
+      off_with_transition: false
+      off_brightness:
+      friendly_name: lights.dinette Light
+      supported_features: 40
+      state: 'on'
+    light.lounge:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness: 74
+      friendly_name: lights.lounge Light
+      supported_features: 40
+      state: 'off'
+    light.bathroom:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      color_mode: xy
+      brightness: 254
+      off_with_transition: false
+      off_brightness:
+      friendly_name: lights.bathroom Light
+      supported_features: 40
+      state: 'on'
+    light.bedroom:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness:
+      friendly_name: lights.bedroom Light
+      supported_features: 40
+      color_mode: color_temp
+      brightness: 254
+      state: 'on'
+  icon: mdi:globe-light-outline
+  metadata: {}
+- id: '1673953944701'
+  name: Bedtime
+  entities:
+    switch.switch_4:
+      raw_state: false
+      friendly_name: Switch 4
+      state: 'off'
+    light.socketlounge_west_light:
+      supported_color_modes:
+      - onoff
+      off_with_transition: false
+      off_brightness:
+      friendly_name: socket.lounge_west Light
+      supported_features: 8
+      state: 'off'
+    light.socketlounge_east_light:
+      supported_color_modes:
+      - onoff
+      off_with_transition: false
+      off_brightness:
+      friendly_name: socket.lounge_east Light
+      supported_features: 8
+      state: 'off'
+    light.bedroom:
+      supported_color_modes:
+      - xy
+      off_with_transition: false
+      off_brightness:
+      friendly_name: _TZ3210_dbilpfqk TS0501B Light
+      supported_features: 40
+      color_mode: xy
+      brightness: 56
+      hs_color:
+      - 225.176
+      - 100
+      rgb_color:
+      - 0
+      - 63
+      - 255
+      xy_color:
+      - 0
+      - 0
+      state: 'on'
+    light.lightslounge_light:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      off_with_transition: false
+      off_brightness:
+      friendly_name: light.lounge
+      supported_features: 40
+      color_mode: color_temp
+      brightness: 56
+      color_temp_kelvin: 2000
+      color_temp: 500
+      hs_color:
+      - 30.601
+      - 94.547
+      rgb_color:
+      - 255
+      - 136
+      - 13
+      xy_color:
+      - 0.599
+      - 0.382
+      state: 'on'
+  icon: mdi:bed
+  metadata: {}

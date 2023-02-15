@@ -1,0 +1,318 @@
+resources:
+  - type: js
+    url: /local/zha-network-card.js
+title: Home
+views:
+  - theme: Backend-selected
+    path: default_view
+    title: Home
+    icon: mdi:home
+    type: custom:grid-layout
+    layout:
+      grid-template-columns: 33% auto 33%
+      grid-template-rows: auto
+      grid-template-areas: |
+        "picture picture picture"
+        "left middle right"
+        ". scenes ."
+      mediaquery:
+        "(max-width: 690px)":
+          grid-template-columns: 100%
+          grid-template-areas: |
+            "picture"
+            "left"
+            "middle"
+            "right"
+            "scenes"
+    badges: []
+    cards:
+      - type: picture
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        image: /local/MoonlightVector.png
+        view_layout:
+          grid-area: picture
+      - type: horizontal-stack
+        cards:
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            entity: light.utility
+            name: Utility
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            entity: light.galley
+            name: Galley
+      - type: horizontal-stack
+        cards:
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            entity: light.dinette
+            name: Dinette
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            name: Pendant
+            entity: light.pendant
+      - type: horizontal-stack
+        cards:
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            name: Stern
+            entity: light.stern
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            name: Bathroom
+            entity: light.bathroom
+      - type: horizontal-stack
+        cards:
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            name: Lounge
+            entity: light.lounge
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            name: Lounge Wall
+            entity: light.lounge_wall
+      - type: horizontal-stack
+        cards:
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            name: Bedroom
+            entity: light.bedroom
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            name: Bedroom Wall
+            entity: light.bedroom_wall
+      - type: horizontal-stack
+        cards:
+          - features:
+              - type: light-brightness
+            type: tile
+            color: accent
+            name: Gunwale
+            entity: light.gunwale
+      - type: entities
+        entities:
+          - entity: switch.switch_1
+            name: Engine Room
+          - entity: switch.switch_2
+            name: Stern light
+          - entity: switch.switch_3
+            name: Immersion Heater
+          - entity: switch.switch_4
+            name: Tunnel Light
+        title: 4 channel relay board
+        show_header_toggle: false
+      - type: grid
+        square: false
+        columns: 1
+        cards:
+          - type: entities
+            entities:
+              - entity: binary_sensor.bowcam_motion
+                name: Motion
+              - entity: binary_sensor.bowcam_person
+                name: Person
+              - entity: binary_sensor.bowcam_vehicle
+                name: Vehicle
+          - show_state: true
+            show_name: true
+            camera_view: auto
+            type: picture-entity
+            entity: camera.bowcam_sub
+            name: Bow Camera
+  - theme: Backend-selected
+    title: 3D View
+    path: 3d-view
+    icon: mdi:ferry
+    type: custom:grid-layout
+    badges: []
+    cards: []
+  - theme: Backend-selected
+    title: Sensors
+    path: sensors
+    icon: mdi:gauge
+    type: custom:grid-layout
+    layout:
+      grid-template-columns: 1fr 1fr
+      grid-template-rows: auto
+      grid-template-areas: |
+        "temps temps_graph"
+        "temps humid_graph"
+        "automations rssi"
+      mediaquery:
+        "(max-width: 690px)":
+          grid-template-columns: 1fr
+          grid-template-areas: |
+            "temps"
+            "temps_graph"
+            "humid_graph"
+            "rssi"
+            "automations"
+    badges: []
+    cards:
+      - type: gauge
+        name: Router RSSI
+        unit: dBm
+        needle: true
+        min: -100
+        max: -55
+        segments:
+          - from: -100
+            color: "#881107"
+          - from: -95
+            color: "#dc0707"
+          - from: -85
+            color: "#ffa600"
+          - from: -75
+            color: "#ffcc00"
+          - from: -64
+            color: "#43a047"
+        entity: sensor.rut955_mobile_signal_strength
+        view_layout:
+          grid-area: rssi
+      - type: entities
+        entities:
+          - entity: sensor.rut955_mobile_data_received_today_sim1
+          - entity: sensor.rut955_mobile_data_sent_today_sim1
+          - entity: sensor.rut955_mobile_signal_strength
+          - entity: sensor.rut955_temperature
+          - entity: sensor.rut955_gps_latitude_coordinate
+          - entity: sensor.rut955_gps_longitude_coordinate
+          - entity: sensor.rut955_gps_speed
+          - entity: sensor.rut955_gps_accuracy
+          - entity: sensor.rut955_gps_satellite_count
+        title: RUT 955
+      - type: entities
+        entities:
+          - entity: sensor.victron_inverter_state
+          - entity: sensor.victron_battery_soc
+          - entity: sensor.victron_battery_state
+          - entity: sensor.victron_battery_time_to_go
+          - entity: sensor.victron_battery_voltage
+          - entity: sensor.victron_battery_current
+          - entity: sensor.victron_battery_power
+          - entity: sensor.victron_battery_consumed_amphours
+          - entity: sensor.victron_ac_consumption
+          - entity: sensor.victron_dc_consumption
+          - entity: sensor.victron_gps_latitude
+          - entity: sensor.victron_gps_longitude
+          - entity: sensor.victron_altitude
+          - entity: sensor.victron_speed
+          - entity: sensor.victron_course
+          - entity: sensor.victron_gps_fix
+          - entity: sensor.victron_gps_number_of_satellites
+          - entity: sensor.diesel_tank_level
+          - entity: sensor.water_tank_level
+        title: Electricity
+  - theme: Backend-selected
+    title: Weather
+    path: weather
+    icon: mdi:weather-lightning-rainy
+    type: custom:grid-layout
+    layout:
+      grid-template-columns: 1fr 1fr 1fr 1fr
+      grid-template-rows: auto
+      grid-template-areas: |
+        ". forecast forecast ."
+        "rain rain wind wind"
+        "map map pressure pressure"
+      mediaquery:
+        "(max-width: 690px)":
+          grid-template-columns: 9fr 1fr
+          grid-template-areas: |
+            "forecast forecast"
+            "rain ."
+            "wind ."
+            "map ."
+            "pressure pressure"
+    badges: []
+    cards:
+      - type: custom:config-template-card
+        entities:
+          - sensor.gps_latitude_coordinate
+          - sensor.gps_longitude_coordinate
+        card:
+          type: iframe
+          url: >-
+            ${'https://embed.windy.com/embed2.html?lat='+states['sensor.rut955_gps_latitude_coordinate'].state+'&lon='+states['sensor.rut955_gps_longitude_coordinate'].state+'&width=650&height=450&zoom=8&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0C'}
+          aspect_ratio: 100%
+        view_layout:
+          grid-area: rain
+      - type: custom:config-template-card
+        entities:
+          - sensor.gps_latitude_coordinate
+          - sensor.gps_longitude_coordinate
+        card:
+          type: iframe
+          url: >-
+            ${'https://embed.windy.com/embed2.html?lat='+states['sensor.rut955_gps_latitude_coordinate'].state+'&lon='+states['sensor.rut955_gps_longitude_coordinate'].state+'&width=650&height=450&zoom=8&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0C'}
+          aspect_ratio: 100%
+        view_layout:
+          grid-area: wind
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: tile
+                name: Erik
+                show_entity_picture: true
+                entity: person.erik
+              - type: tile
+                name: Lynsey
+                show_entity_picture: true
+                entity: person.lynsey
+          - type: map
+            card_mod:
+              style: |
+                ha-map {
+                  position: inherit !important;
+                }
+            entities:
+              - entity: person.erik
+              - entity: person.lynsey
+              - entity: zone.home
+            hours_to_show: 8
+        view_layout:
+          grid-area: map
+      - chart_type: line
+        period: hour
+        days_to_show: 30
+        type: statistics-graph
+        entities:
+          - sensor.average_pressure
+        title: "30 day pressure (SD: 1)"
+        stat_types:
+          - mean
+        view_layout:
+          grid-area: pressure
+      - type: vertical-stack
+        cards:
+          - type: weather-forecast
+            entity: weather.moonlight_hourly
+          - type: weather-forecast
+            entity: weather.moonlight
+            show_current: false
+        view_layout:
+          grid-area: forecast

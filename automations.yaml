@@ -1,0 +1,55 @@
+- id: '1672929641555'
+  alias: Set home location from GPS
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.gps_latitude_coordinate
+    - sensor.gps_longitude_coordinate
+  condition: []
+  action:
+  - service: homeassistant.set_location
+    data:
+      latitude: '{{ states(''sensor.gps_latitude_coordinate'') }}
+
+        '
+      longitude: '{{ states(''sensor.gps_longitude_coordinate'') }}
+
+        '
+  mode: single
+- id: '1675266193319'
+  alias: Btn dinette toggle dinette and lounge
+  description: ''
+  trigger:
+  - device_id: 58f044f416251b0d8080e76433616480
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - type: toggle
+    device_id: b9d3b7dae8376197aaac6a09a3168452
+    entity_id: light.dinette
+    domain: light
+  - type: toggle
+    device_id: 67e73540bdc3a27991dea0554ade67c7
+    entity_id: light.lounge
+    domain: light
+  mode: single
+- id: '1675266335902'
+  alias: Btn dinette dbl toggle galley
+  description: ''
+  trigger:
+  - device_id: 58f044f416251b0d8080e76433616480
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - type: toggle
+    device_id: f7603e249e43a97a0c3820e129031f74
+    entity_id: light.galley
+    domain: light
+  mode: single

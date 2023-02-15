@@ -1,0 +1,28 @@
+# files to include
+!*.yaml
+!.gitignore
+!*.md
+
+# files to exclude
+secrets.yaml
+watchman_report.txt
+home-assistant_v2.db*
+zigbee.db*
+
+# directories to exclude
+/blueprints
+/c-sharp-for-homeassistant
+/custom_components
+/esphome
+/image
+/packages
+/tts
+/www
+
+# other recommendations from video https://www.youtube.com/watch?v=hhv-WqGUy_o
+.ssh
+.storage
+.cloud
+.google.token
+home-assistant.log*
+id_rsa*

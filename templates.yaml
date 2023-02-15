@@ -1,0 +1,27 @@
+#https://www.home-assistant.io/integrations/template/
+
+- trigger:
+  - platform: time_pattern
+    # Every hour on the hour
+    minutes: 0
+  sensor:
+    - name: "Average pressure"
+      state_class: measurement
+      unit_of_measurement: hPa
+      device_class: atmospheric_pressure
+      state: >-
+        {# This is how you do a comment #}
+        {% set pressures = [
+          states('sensor.weather_pressure_hut') | int, 
+          states('sensor.weather_pressure_lounge') | int, 
+          states('sensor.weather_pressure_bedroom') | int] %}
+
+        {{(pressures | sum / pressures | count) | round (1) }}
+      attributes:
+        standard_deviation: "1"
+
+# URL for Windy.com - not needed when using the config_template_card
+#- sensor:
+#  - name: "Windy URL Temp"
+#    state: > 
+#      https://embed.windy.com/embed2.html?lat={{states('sensor.gps_latitude_coordinate')}}&lon={{states('sensor.gps_longitude_coordinate')}}&width=650&height=450&zoom=8&level=surface&overlay=temp&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0C

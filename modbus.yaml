@@ -1,0 +1,235 @@
+- name: rut955
+  host: 192.168.1.1
+  type: tcp
+  port: 502
+
+  sensors:
+    - name: "RUT955 Mobile signal strength"
+      unique_id: "75936d30-6a0b-432b-ba17-04ba86becaa6"
+      scan_interval: 120
+      slave: 1
+      address: 3
+      count: 2
+      data_type: int32
+      device_class: signal_strength
+      unit_of_measurement: "dBm"
+    - name: "RUT955 temperature"
+      unique_id: "6310cc9e-dc31-40d9-9da2-a4a77e0a595d"
+      scan_interval: 120
+      slave: 1
+      address: 5
+      count: 2
+      data_type: int32
+      scale: 0.1
+      device_class: temperature
+      unit_of_measurement: "°C"
+    - name: "RUT955 Mobile data received today (SIM1)"
+      unique_id: "4cecced1-f307-4057-ac65-f8b1c5e04986"
+      scan_interval: 600
+      slave: 1
+      address: 185
+      count: 2
+      data_type: uint32
+      state_class: total_increasing
+      device_class: data_size
+      unit_of_measurement: "MB"
+    - name: "RUT955 Mobile data sent today (SIM1)"
+      unique_id: "43b40d8c-c3dc-4442-8520-c200f44bd752"
+      scan_interval: 600
+      slave: 1
+      address: 187
+      count: 2
+      data_type: uint32
+      state_class: total_increasing
+      device_class: data_size
+      unit_of_measurement: "MB"
+    - name: "RUT955 GPS speed"
+      unique_id: "2d04cd41-887f-4030-a10b-ec79c0084f91"
+      scan_interval: 30
+      slave: 1
+      address: 179
+      count: 2
+      data_type: float32
+      precision: 3
+    - name: "RUT955 GPS satellite count"
+      unique_id: "f6ead690-ae89-49dd-b4e4-228fbced1f0d"
+      scan_interval: 120
+      slave: 1
+      address: 181
+      count: 2
+      data_type: uint32
+    - name: "RUT955 GPS accuracy"
+      unique_id: "ae3532eb-908e-4fd2-9567-3e0198654b59"
+      scan_interval: 120
+      slave: 1
+      address: 183
+      count: 2
+      data_type: float32
+      precision: 3
+    - name: "RUT955 GPS latitude coordinate"
+      unique_id: "c6b80d6b-dc32-42fa-9e49-590dab6f145f"
+      scan_interval: 30
+      slave: 1
+      address: 143
+      count: 2
+      data_type: float32
+      precision: 3
+    - name: "RUT955 GPS longitude coordinate"
+      unique_id: "4f507f6d-3280-4385-8b47-0510ff579844"
+      scan_interval: 30
+      slave: 1
+      address: 145
+      count: 2
+      data_type: float32
+      precision: 3
+
+- name: cerbo
+  host: 192.168.1.249
+  type: tcp
+  port: 502
+
+  sensors:
+    - name: "Victron Inverter State"
+      unique_id: "ffddebae-be31-44cc-9477-c95ac633cb04"
+      slave: 227
+      address: 33
+      data_type: uint16
+    - name: "Victron Battery Voltage"
+      unique_id: "05d44e9d-7d0e-4cd7-954a-7ab4f01e86be"
+      scan_interval: 120
+      slave: 100
+      address: 840
+      data_type: uint16
+      scale: 0.1
+      precision: 1
+      device_class: voltage
+      unit_of_measurement: "V"
+    - name: "Victron Battery Current"
+      unique_id: "b5b43629-9e76-4e39-b026-320b5b040a7d"
+      slave: 100
+      address: 841
+      data_type: int16
+      scale: 0.1
+      precision: 1
+      device_class: current
+      unit_of_measurement: "A"
+    - name: "Victron Battery Power"
+      unique_id: "1fb84f18-7cc7-4135-a576-d11e2863cdcc"
+      slave: 100
+      address: 842
+      data_type: int16
+      device_class: power
+      unit_of_measurement: "W"
+    - name: "Victron Battery SOC"
+      unique_id: "689f9d9c-218c-412d-88fe-c5da0147ef7f"
+      scan_interval: 60
+      slave: 100
+      address: 843
+      data_type: uint16
+      unit_of_measurement: "%"
+      device_class: battery
+      state_class: measurement
+    - name: "Victron Battery State"
+      unique_id: "e0815347-4f63-41a1-90cb-4065653fc015"
+      slave: 100
+      address: 844
+      data_type: uint16
+    - name: "Victron Battery Consumed Amphours"
+      unique_id: "252ddecd-d8bc-4689-90c2-40b526f1b9e1"
+      scan_interval: 120
+      slave: 100
+      address: 845
+      data_type: uint16
+      scale: 0.1
+    - name: "Victron Battery Time to Go"
+      unique_id: "a1796fed-89f8-478a-8424-2bb63a880adc"
+      slave: 100
+      address: 846
+      data_type: uint16
+      device_class: duration
+      unit_of_measurement: "s"
+      scale: 100
+    - name: "Victron DC Consumption"
+      unique_id: "db44ba54-5c14-40f3-86fb-392b25a64428"
+      slave: 100
+      address: 860
+      data_type: int16
+      device_class: power
+      unit_of_measurement: "W"
+    - name: "Victron AC Consumption"
+      unique_id: "74d0545b-fe2b-46a6-8390-410cea2130dd"
+      slave: 100
+      address: 817
+      data_type: uint16
+      device_class: power
+      unit_of_measurement: "W"
+    - name: "Victron GPS Latitude"
+      unique_id: "55b16811-a5fe-45e3-847a-a2cc45fa30ed"
+      scan_interval: 30
+      slave: 100
+      address: 2800
+      data_type: int32
+      scale: 0.0000001
+      precision: 3
+    - name: "Victron GPS Longitude"
+      unique_id: "e5879632-c905-4612-b14b-a98265df2dd0"
+      scan_interval: 30
+      slave: 100
+      address: 2802
+      data_type: int32
+      scale: 0.0000001
+      precision: 3
+    - name: "Victron Course"
+      unique_id: "8a2b23f1-de03-4639-be89-278ddb33b049"
+      scan_interval: 30
+      slave: 100
+      address: 2804
+      data_type: uint16
+      scale: 0.01
+      precision: 2
+    - name: "Victron Speed"
+      unique_id: "c6918a4a-4678-4b7b-b902-e862750f4841"
+      slave: 100
+      address: 2805
+      data_type: uint16
+      scale: 0.01
+      precision: 1
+      device_class: speed
+      unit_of_measurement: "m/s"
+    - name: "Victron GPS fix"
+      unique_id: "1f8daf04-101e-4ded-9444-b8387cfb6079"
+      scan_interval: 30
+      slave: 100
+      address: 2806
+      data_type: uint16
+    - name: "Victron GPS number of satellites"
+      unique_id: "62f8fdc6-3a24-4c3e-8cb4-c53185b5a723"
+      scan_interval: 30
+      slave: 100
+      address: 2807
+      data_type: uint16
+    - name: "Victron Altitude"
+      unique_id: "1a07b5de-7e38-452d-a1a0-8fb02d2d1f41"
+      scan_interval: 300
+      slave: 100
+      address: 2808
+      data_type: int32
+      scale: 0.1
+      device_class: distance
+      unit_of_measurement: "m"
+    - name: "Diesel Tank Level"
+      unique_id: "1fddbfc9-1015-4a8a-aecd-fcaa66bf7f5e"
+      scan_interval: 600
+      slave: 20
+      address: 3004
+      data_type: uint16
+      scale: 0.1
+      unit_of_measurement: "%"
+    - name: "Water Tank Level"
+      unique_id: "84c82c82-bbc0-4653-95c1-28a9245b1b14"
+      scan_interval: 300
+      slave: 21
+      address: 3004
+      data_type: uint16
+      scale: 0.1
+      unit_of_measurement: "%"
