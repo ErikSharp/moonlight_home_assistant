@@ -302,7 +302,7 @@ views:
         type: statistics-graph
         entities:
           - sensor.average_pressure
-        title: "30 day pressure (SD: 1)"
+        title: "30 day pressure"
         stat_types:
           - mean
         view_layout:
