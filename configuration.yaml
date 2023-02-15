@@ -13,6 +13,8 @@ lovelace:
   resources:
     - url: /hacsfiles/lovelace-layout-card/layout-card.js
       type: module
+    - url: /hacsfiles/config-template-card/config-template-card.js
+      type: module
 
 group: !include groups.yaml
 automation: !include automations.yaml
