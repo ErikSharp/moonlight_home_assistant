@@ -1,0 +1,124 @@
+# lovelace_gen
+
+{% macro tile(light, name) %}
+      - name: {{ name }}
+        features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        entity: {{ light }}
+{% endmacro %}
+
+title: Control
+path: control
+theme: Backend-selected
+icon: mdi:lightbulb-on
+type: custom:grid-layout
+layout:
+  grid-template-columns: 33% auto 33%
+  grid-template-rows: auto
+  grid-template-areas: |
+    "picture picture picture"
+    "left middle right"
+    ". scenes ."
+  mediaquery:
+    "(max-width: 690px)":
+      grid-template-columns: 100%
+      grid-template-areas: |
+        "picture"
+        "left"
+        "middle"
+        "right"
+        "scenes"
+badges: []
+cards:
+  - type: horizontal-stack
+    cards:
+      {{ tile("light.utility", "utility") }}
+      - features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        entity: light.galley
+        name: Galley
+  - type: horizontal-stack
+    cards:
+      - features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        entity: light.dinette
+        name: Dinette
+      - features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        name: Pendant
+        entity: light.pendant
+  - type: horizontal-stack
+    cards:
+      - features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        name: Stern
+        entity: light.stern
+      - features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        name: Bathroom
+        entity: light.bathroom
+  - type: horizontal-stack
+    cards:
+      - features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        name: Lounge
+        entity: light.lounge
+      - features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        name: Lounge Wall
+        entity: light.lounge_wall
+  - type: horizontal-stack
+    cards:
+      - features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        name: Bedroom
+        entity: light.bedroom
+      - features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        name: Bedroom Wall
+        entity: light.bedroom_wall
+  - type: horizontal-stack
+    cards:
+      - features:
+          - type: light-brightness
+        type: tile
+        color: accent
+        name: Gunwale
+        entity: light.gunwale
+  - type: entities
+    entities:
+      - entity: switch.switch_1
+        name: Engine Room
+      - entity: switch.switch_2
+        name: Stern light
+      - entity: switch.switch_3
+        name: Immersion Heater
+      - entity: switch.switch_4
+        name: Tunnel Light
+    title: 4 channel relay board
+    show_header_toggle: false
+  - type: entities
+    title: Inverter Request
+    entities:
+      - input_select.inverter_switch_request
+      - sensor.victron_inverter

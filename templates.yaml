@@ -1,25 +1,54 @@
 #https://www.home-assistant.io/integrations/template/
 
-- trigger:
-  - platform: time_pattern
-    # Every hour on the hour
-    minutes: 0
-  sensor:
-    - name: "Average pressure"
-      state_class: measurement
-      unit_of_measurement: hPa
-      device_class: atmospheric_pressure
-      state: >-
-        {# This is how you do a comment #}
-        {% set pressures = [
-          states('sensor.weather_pressure_hut') | int, 
-          states('sensor.weather_pressure_lounge') | int, 
-          states('sensor.weather_pressure_bedroom') | int] %}
+# - trigger:
+#   - platform: time_pattern
+#     # Every hour on the hour
+#     minutes: 0
+#   sensor:
+#     - name: "Average pressure"
+#       state_class: measurement
+#       unit_of_measurement: hPa
+#       device_class: atmospheric_pressure
+#       state: >-
+#         {# This is how you do a comment #}
+#         {% set pressures = [
+#           states('sensor.weather_pressure_hut') | int, 
+#           states('sensor.weather_pressure_lounge') | int, 
+#           states('sensor.weather_pressure_bedroom') | int] %}
 
-        {{(pressures | sum / pressures | count) | round (1) }}
-      attributes:
-        standard_deviation: "1"
+#         {{(pressures | sum / pressures | count) | round (1) }}
+#       attributes:
+#         standard_deviation: "1"
 
+- sensor:
+  - name: "Victron Inverter"
+    icon: mdi:sine-wave
+    state: >
+      {% if is_state("sensor.victron_inverter_state", "1") %}
+        Charger Only
+      {% elif is_state("sensor.victron_inverter_state", "2") %}
+        Inverter Only
+      {% elif is_state("sensor.victron_inverter_state", "3") %}
+        On
+      {% elif is_state("sensor.victron_inverter_state", "4") %}
+        Off
+      {% else %}
+        Unknown
+      {% endif %}
+
+  - name: "Battery State"
+    icon: mdi:battery-80
+    state: >
+      {% if is_state("sensor.victron_battery_state", "0") %}
+        Idle
+      {% elif is_state("sensor.victron_battery_state", "1") %}
+        Charging
+      {% elif is_state("sensor.victron_battery_state", "2") %}
+        Discharging
+      {% else %}
+        Unknown
+      {% endif %}
+        
 # URL for Windy.com - not needed when using the config_template_card
 #- sensor:
 #  - name: "Windy URL Temp"

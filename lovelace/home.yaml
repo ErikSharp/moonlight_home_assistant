@@ -1,0 +1,95 @@
+title: Home
+path: default_view
+theme: Backend-selected
+icon: mdi:home
+type: custom:grid-layout
+layout:
+  grid-template-columns: auto 20% 20% 20% 20% auto
+  grid-template-rows: auto
+  grid-template-areas: |
+    "picture picture picture picture picture picture"
+    ". chip1 chip2 chip3 chip4 ."
+    ". camera camera camera camera ."
+  mediaquery:
+    "(max-width: 690px)":
+      grid-template-columns: 50% 50%
+      grid-template-areas: |
+        "picture picture"
+        "chip1 chip2"
+        "chip3 chip4"
+        "camera camera"
+cards:
+  - type: picture
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+    image: /local/MoonlightVector.png
+    view_layout:
+      grid-area: picture
+      show:
+        mediaquery: "(min-width: 691px)"
+  - type: picture
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+    image: /local/name.png
+    view_layout:
+      grid-area: picture
+      show:
+        mediaquery: "(max-width: 690px)"
+  - type: "custom:button-card"
+    template: chip_navigate
+    label: 'Controls'
+    variables:
+      ulm_chip_navigate_path: /lovelace/control
+      ulm_chip_navigate_icon: mdi:lightbulb-on
+    view_layout:
+      grid-area: chip1
+      place-self: center
+  - type: "custom:button-card"
+    template: chip_navigate
+    label: 'Scenes'
+    variables:
+      ulm_chip_navigate_path: /lovelace/scenes
+      ulm_chip_navigate_icon: mdi:tune-vertical
+    view_layout:
+      grid-area: chip2
+      place-self: center
+  - type: "custom:button-card"
+    template: chip_navigate
+    label: 'Monitoring'
+    variables:
+      ulm_chip_navigate_path: /lovelace/monitoring
+      ulm_chip_navigate_icon: mdi:gauge
+    view_layout:
+      grid-area: chip3
+      place-self: center
+  - type: "custom:button-card"
+    template: chip_navigate
+    label: 'Location'
+    variables:
+      ulm_chip_navigate_path: /lovelace/location
+      ulm_chip_navigate_icon: mdi:map
+    view_layout:
+      grid-area: chip4
+      place-self: center
+  - type: picture-elements
+    title: Bow Camera
+    image: nothing
+    camera_view: auto
+    camera_image: camera.bowcam_sub
+    elements:
+      - type: state-icon
+        entity: binary_sensor.bowcam_motion
+        style:
+          right: 50px
+          top: -40px
+      - type: state-icon
+        entity: binary_sensor.bowcam_person
+        style:
+          right: 0px
+          top: -40px
+    view_layout:
+      grid-area: camera

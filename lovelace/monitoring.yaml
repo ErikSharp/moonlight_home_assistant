@@ -1,0 +1,103 @@
+title: Monitoring
+path: monitoring
+theme: Backend-selected
+icon: mdi:gauge
+type: custom:grid-layout
+layout:
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: auto
+  grid-template-areas: |
+    "temps temps_graph"
+    "temps humid_graph"
+    "automations rssi"
+  mediaquery:
+    "(max-width: 690px)":
+      grid-template-columns: 1fr
+      grid-template-areas: |
+        "temps"
+        "temps_graph"
+        "humid_graph"
+        "rssi"
+        "automations"
+badges: []
+cards:
+  - type: gauge
+    name: Router RSSI
+    unit: dBm
+    needle: true
+    min: -100
+    max: -55
+    segments:
+      - from: -100
+        color: "#881107"
+      - from: -95
+        color: "#dc0707"
+      - from: -85
+        color: "#ffa600"
+      - from: -75
+        color: "#ffcc00"
+      - from: -64
+        color: "#43a047"
+    entity: sensor.rut955_mobile_signal_strength
+    view_layout:
+      grid-area: rssi
+  - type: entities
+    entities:
+      - entity: sensor.rut955_mobile_data_received_today_sim1
+      - entity: sensor.rut955_mobile_data_sent_today_sim1
+      - entity: sensor.rut955_mobile_signal_strength
+      - entity: sensor.rut955_temperature
+      - entity: sensor.rut955_gps_latitude_coordinate
+      - entity: sensor.rut955_gps_longitude_coordinate
+      - entity: sensor.rut955_gps_speed
+      - entity: sensor.rut955_gps_accuracy
+      - entity: sensor.rut955_gps_satellite_count
+    title: RUT 955
+  - type: glance
+    title: Electricity
+    columns: 3
+    entities:
+      - entity: sensor.victron_inverter
+        name: Inverter  
+        card_mod:
+          style: |
+            :host .name {
+              font-size: 1.5rem;
+              font-family: Georgia;
+              color: red;
+            }          
+      - entity: sensor.victron_battery_soc
+        name: SOC
+      - entity: sensor.battery_state
+        name: Battery State
+      - entity: sensor.victron_battery_time_to_go
+        name: Time Left
+      - entity: sensor.victron_battery_voltage
+        name: Battery Voltage
+      - entity: sensor.victron_battery_current
+        name: Battery Current
+      - entity: sensor.victron_battery_power
+        name: Battery Power
+      - entity: sensor.victron_battery_consumed_amphours
+        name: Battery Ah Consumed
+      - entity: sensor.victron_ac_consumption
+        name: AC Consumption
+      - entity: sensor.victron_dc_consumption
+        name: DC Consumption
+  - type: entities
+    entities:
+      - entity: sensor.victron_gps_latitude
+      - entity: sensor.victron_gps_longitude
+      - entity: sensor.victron_altitude
+      - entity: sensor.victron_speed
+      - entity: sensor.victron_course
+      - entity: sensor.victron_gps_fix
+      - entity: sensor.victron_gps_number_of_satellites
+      - entity: sensor.diesel_tank_level
+      - entity: sensor.water_tank_level
+    title: Other data
+    card_mod:
+      style: |
+        ha-card {
+          color: cornflowerblue;
+        }

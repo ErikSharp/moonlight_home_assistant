@@ -1,0 +1,46 @@
+title: Scenes
+path: scenes
+theme: Backend-selected
+icon: mdi:tune-vertical
+type: custom:grid-layout
+layout:
+  grid-template-columns: auto 20% 20% auto
+  grid-template-rows: auto
+  grid-template-areas: |
+    ". tv int_off ."
+  mediaquery:
+    "(max-width: 690px)":
+      grid-template-columns: 100%
+      grid-template-areas: |
+        "tv"
+        "int_off"
+cards:
+  - type: 'custom:button-card'
+    template: card_title
+    name: Scenes
+  - name: TV
+    type: button
+    entity: scene.tv
+    show_state: false
+    icon: mdi:television
+    tap_action:
+      action: call-service
+      service: scene.turn_on
+      data:
+          entity_id: scene.tv
+    view_layout:
+      grid-area: tv
+      place-self: center
+  - name: Interior Off
+    type: button
+    entity: scene.interior_off
+    show_state: false
+    icon: mdi:lightbulb-multiple-off
+    tap_action:
+      action: call-service
+      service: scene.turn_on
+      data:
+          entity_id: scene.interior_off
+    view_layout:
+      grid-area: int_off
+      place-self: center

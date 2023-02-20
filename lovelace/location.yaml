@@ -1,0 +1,90 @@
+title: Location
+path: location
+theme: Backend-selected
+icon: mdi:map
+type: custom:grid-layout
+layout:
+  grid-template-columns: 1fr 1fr 1fr 1fr
+  grid-template-rows: auto
+  grid-template-areas: |
+    ". forecast forecast ."
+    "rain rain wind wind"
+    "map map pressure pressure"
+  mediaquery:
+    "(max-width: 690px)":
+      grid-template-columns: 9fr 1fr
+      grid-template-areas: |
+        "forecast forecast"
+        "rain ."
+        "wind ."
+        "map ."
+        "pressure pressure"
+badges: []
+cards:
+  - type: custom:config-template-card
+    entities:
+      - sensor.gps_latitude_coordinate
+      - sensor.gps_longitude_coordinate
+    card:
+      type: iframe
+      url: >-
+        ${'https://embed.windy.com/embed2.html?lat='+states['sensor.rut955_gps_latitude_coordinate'].state+'&lon='+states['sensor.rut955_gps_longitude_coordinate'].state+'&width=650&height=450&zoom=8&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0C'}
+      aspect_ratio: 100%
+    view_layout:
+      grid-area: rain
+  - type: custom:config-template-card
+    entities:
+      - sensor.gps_latitude_coordinate
+      - sensor.gps_longitude_coordinate
+    card:
+      type: iframe
+      url: >-
+        ${'https://embed.windy.com/embed2.html?lat='+states['sensor.rut955_gps_latitude_coordinate'].state+'&lon='+states['sensor.rut955_gps_longitude_coordinate'].state+'&width=650&height=450&zoom=8&level=surface&overlay=wind&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=mph&metricTemp=%C2%B0C'}
+      aspect_ratio: 100%
+    view_layout:
+      grid-area: wind
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: tile
+            name: Erik
+            show_entity_picture: true
+            entity: person.erik
+          - type: tile
+            name: Lynsey
+            show_entity_picture: true
+            entity: person.lynsey
+      - type: map
+        card_mod:
+          style: |
+            ha-map {
+              position: inherit !important;
+            }
+        entities:
+          - entity: person.erik
+          - entity: person.lynsey
+          - entity: zone.home
+        hours_to_show: 8
+    view_layout:
+      grid-area: map
+  - chart_type: line
+    period: hour
+    days_to_show: 30
+    type: statistics-graph
+    entities:
+      - sensor.average_pressure
+    title: "30 day pressures"
+    stat_types:
+      - mean
+    view_layout:
+      grid-area: pressure
+  - type: vertical-stack
+    cards:
+      - type: weather-forecast
+        entity: weather.moonlight_hourly
+      - type: weather-forecast
+        entity: weather.moonlight
+        show_current: false
+    view_layout:
+      grid-area: forecast

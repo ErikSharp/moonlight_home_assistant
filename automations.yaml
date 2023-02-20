@@ -53,3 +53,28 @@
     entity_id: light.galley
     domain: light
   mode: single
+- id: '1676750477946'
+  alias: Set Inverter State
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_select.inverter_switch_request
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: cerbo
+      slave: 227
+      address: 33
+      value: |
+        {% if is_state("input_select.inverter_switch_request", "Charger Only") %}
+        1
+        {% elif is_state("input_select.inverter_switch_request", "Inverter Only") %}
+        2
+        {% elif is_state("input_select.inverter_switch_request", "On") %}
+        3
+        {% elif is_state("input_select.inverter_switch_request", "Off") %}
+        4
+        {% endif %}
+  mode: single
