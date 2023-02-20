@@ -7,20 +7,27 @@ layout:
   grid-template-columns: 1fr 1fr
   grid-template-rows: auto
   grid-template-areas: |
-    "temps temps_graph"
-    "temps humid_graph"
-    "automations rssi"
+    "back ."
+    "router electricity"
+    "other rssi"
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 1fr
       grid-template-areas: |
-        "temps"
-        "temps_graph"
-        "humid_graph"
+        "back"
+        "router"
+        "electricity"
+        "other"
         "rssi"
-        "automations"
 badges: []
 cards:
+  - type: "custom:button-card"
+    template: chip_back
+    variables:
+      ulm_chip_back_path: /lovelace/home
+    view_layout:
+      grid-area: back
+      place-self: left
   - type: gauge
     name: Router RSSI
     unit: dBm
@@ -53,6 +60,8 @@ cards:
       - entity: sensor.rut955_gps_accuracy
       - entity: sensor.rut955_gps_satellite_count
     title: RUT 955
+    view_layout:
+      grid-area: router
   - type: glance
     title: Electricity
     columns: 3
@@ -84,6 +93,8 @@ cards:
         name: AC Consumption
       - entity: sensor.victron_dc_consumption
         name: DC Consumption
+    view_layout:
+      grid-area: electricity
   - type: entities
     entities:
       - entity: sensor.victron_gps_latitude
@@ -101,3 +112,5 @@ cards:
         ha-card {
           color: cornflowerblue;
         }
+    view_layout:
+      grid-area: other

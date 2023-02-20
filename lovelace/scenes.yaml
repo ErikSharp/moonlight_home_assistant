@@ -7,17 +7,22 @@ layout:
   grid-template-columns: auto 20% 20% auto
   grid-template-rows: auto
   grid-template-areas: |
+    "back . . ."
     ". tv int_off ."
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 100%
       grid-template-areas: |
+        "back"
         "tv"
         "int_off"
 cards:
-  - type: 'custom:button-card'
-    template: card_title
-    name: Scenes
+  - type: "custom:button-card"
+    template: chip_back
+    variables:
+      ulm_chip_back_path: /lovelace/home
+    view_layout:
+      grid-area: back
   - name: TV
     type: button
     entity: scene.tv
