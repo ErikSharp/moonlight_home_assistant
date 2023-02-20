@@ -2,6 +2,7 @@
 !*.yaml
 !.gitignore
 !*.md
+/.vscode/settings.json
 
 # files to exclude
 secrets.yaml
@@ -18,6 +19,8 @@ zigbee.db*
 /packages
 /tts
 /www
+/themes
+/ui_lovelace_minimalist
 
 # other recommendations from video https://www.youtube.com/watch?v=hhv-WqGUy_o
 .ssh
