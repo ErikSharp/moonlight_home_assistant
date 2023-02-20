@@ -83,6 +83,14 @@ cards:
     camera_image: camera.bowcam_sub
     elements:
       - type: state-icon
+        entity: switch.switch_4
+        icon: mdi:car-light-high
+        title: Tunnel Light
+        style:
+          right: 100px
+          top: -25px
+        tap_action: none
+      - type: state-icon
         entity: binary_sensor.bowcam_motion
         style:
           right: 50px
