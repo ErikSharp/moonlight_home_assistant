@@ -1,12 +1,30 @@
 # lovelace_gen
 
-{% macro tile(light, name) %}
-      - name: {{ name }}
-        features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        entity: {{ light }}
+{% macro tile(light, name, grid_area) %}
+  - name: {{ name }}
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: {{ light }}
+    view_layout:
+      grid-area: {{ grid_area }}
+{% endmacro %}
+
+{% macro button(name, entity, icon, grid_area) %}
+  - name: {{ name }}
+    type: button
+    entity: {{ entity }}
+    show_state: true
+    icon: {{ icon }}
+    icon_height: 50px
+    tap_action:
+      action: call-service
+      service: switch.toggle
+      data:
+        entity_id: switch.switch_1
+    view_layout:
+      grid-area: {{ grid_area }}
 {% endmacro %}
 
 title: Control
@@ -15,27 +33,33 @@ theme: Backend-selected
 icon: mdi:lightbulb-on
 type: custom:grid-layout
 layout:
-  grid-template-columns: 33% auto 33%
-  grid-template-rows: auto
+  grid-template-columns: repeat (4, 1fr)
+  grid-template-rows: 40px 50px repeat(4, 125px) 50px 200px
   grid-template-areas: |
-    "back . ."
-    "group1 group2 group3"
-    "group4 group5 group6"
-    "group7 group8 ."
+    "back . . ."
+    "lights-label . . ."
+    "stern stern_omni engine utility"
+    "galley dinette pendant gunwale"
+    ". lounge lounge_wall ." 
+    "bathroom bedroom bedroom_wall tunnel"
+    "other . . ."
+    ". inverter inverter ."
   mediaquery:
     "(max-width: 690px)":
-      grid-template-columns: 100%
+      grid-template-columns: 50% 50%
+      grid-template-rows: 40px 50px repeat(7, 125px) 50px 200px
       grid-template-areas: |
-        "back"
-        "title"
-        "group1"
-        "group2"
-        "group3"
-        "group4"
-        "group5"
-        "group6"
-        "group7"
-        "group8"
+        "back ."
+        "lights-label ."
+        "stern stern_omni"
+        "engine utility"
+        "galley dinette"
+        "pendant gunwale"
+        "lounge lounge_wall"
+        "bathroom bedroom"
+        "bedroom_wall tunnel"
+        "other ."
+        "inverter inverter"
 badges: []
 cards:
   - type: "custom:button-card"
@@ -44,109 +68,48 @@ cards:
       ulm_chip_back_path: /lovelace/home
     view_layout:
       grid-area: back
-  - type: horizontal-stack
-    cards:
-      {{ tile("light.utility", "utility") }}
-      - features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        entity: light.galley
-        name: Galley
+  - type: 'custom:button-card'
+    template: card_title
+    name: Lights
     view_layout:
-      grid-area: group1
-  - type: horizontal-stack
-    cards:
-      - features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        entity: light.dinette
-        name: Dinette
-      - features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        name: Pendant
-        entity: light.pendant
+      grid-area: lights-label
+    card_mod:
+      style: |
+        ha-card {
+          border-style: unset;
+          color: tan;
+          margin-left: 0px !important;
+        }
+  {{ tile("light.utility", "Utility", "utility") }}
+  {{ tile("light.galley", "Galley", "galley") }}
+  {{ tile("light.dinette", "Dinette", "dinette") }}
+  {{ tile("light.pendant", "Pendant", "pendant") }}
+  {{ tile("light.stern", "Stern", "stern") }}
+  {{ tile("light.bathroom", "Bathroom", "bathroom") }}
+  {{ tile("light.lounge", "Lounge", "lounge") }}
+  {{ tile("light.lounge_wall", "Lounge Wall", "lounge_wall") }}
+  {{ tile("light.bedroom", "Bedroom", "bedroom") }}
+  {{ tile("light.bedroom_wall", "Bedroom Wall", "bedroom_wall") }}
+  {{ tile("light.gunwale", "Gunwale", "gunwale") }}
+  {{ button("Engine Bay", "switch.switch_1", "mdi:engine", "engine")}}
+  {{ button("Stern Light", "switch.switch_2", "mdi:bulkhead-light", "stern_omni")}}
+  {{ button("Tunnel Light", "switch.switch_4", "mdi:car-light-high", "tunnel")}}
+  - type: 'custom:button-card'
+    template: card_title
+    name: Other
     view_layout:
-        grid-area: group2
-  - type: horizontal-stack
-    cards:
-      - features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        name: Stern
-        entity: light.stern
-      - features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        name: Bathroom
-        entity: light.bathroom
-    view_layout:
-        grid-area: group3
-  - type: horizontal-stack
-    cards:
-      - features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        name: Lounge
-        entity: light.lounge
-      - features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        name: Lounge Wall
-        entity: light.lounge_wall
-    view_layout:
-        grid-area: group4
-  - type: horizontal-stack
-    cards:
-      - features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        name: Bedroom
-        entity: light.bedroom
-      - features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        name: Bedroom Wall
-        entity: light.bedroom_wall
-    view_layout:
-        grid-area: group5
-  - type: horizontal-stack
-    cards:
-      - features:
-          - type: light-brightness
-        type: tile
-        color: accent
-        name: Gunwale
-        entity: light.gunwale
-    view_layout:
-        grid-area: group6
+      grid-area: other
+    card_mod:
+      style: |
+        ha-card {
+          border-style: unset;
+          color: tan;
+          margin-left: 0px !important;
+        }
   - type: entities
-    entities:
-      - entity: switch.switch_1
-        name: Engine Room
-      - entity: switch.switch_2
-        name: Stern light
-      - entity: switch.switch_3
-        name: Immersion Heater
-      - entity: switch.switch_4
-        name: Tunnel Light
-    title: 4 channel relay board
-    show_header_toggle: false
-    view_layout:
-        grid-area: group7
-  - type: entities
-    title: Inverter Request
+    title: Inverter
     entities:
       - input_select.inverter_switch_request
       - sensor.victron_inverter
     view_layout:
-        grid-area: group8
+      grid-area: inverter
