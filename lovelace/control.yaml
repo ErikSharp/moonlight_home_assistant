@@ -22,7 +22,7 @@
       action: call-service
       service: switch.toggle
       data:
-        entity_id: switch.switch_1
+        entity_id: {{ entity }}
     view_layout:
       grid-area: {{ grid_area }}
 {% endmacro %}
