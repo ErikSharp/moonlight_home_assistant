@@ -18,20 +18,47 @@ layout:
   grid-template-columns: 33% auto 33%
   grid-template-rows: auto
   grid-template-areas: |
-    "picture picture picture"
-    "left middle right"
-    ". scenes ."
+    "back title ."
+    "group1 group2 group3"
+    "group4 group5 group6"
+    "group7 group8 ."
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 100%
       grid-template-areas: |
-        "picture"
-        "left"
-        "middle"
-        "right"
-        "scenes"
+        "back"
+        "title"
+        "group1"
+        "group2"
+        "group3"
+        "group4"
+        "group5"
+        "group6"
+        "group7"
+        "group8"
 badges: []
 cards:
+  - type: "custom:button-card"
+    template: chip_back
+    variables:
+      ulm_chip_back_path: /lovelace/home
+    view_layout:
+      grid-area: back
+  - type: 'custom:button-card'
+    template: card_title
+    name: Controls
+    view_layout:
+      grid-area: title
+      place-self: center
+    card_mod:
+      style: |
+        ha-card {
+          border-style: unset;
+          font-size: 80px;
+          font-family: royalsignage;
+          color: tan;
+          margin-left: 0px !important;
+        }  
   - type: horizontal-stack
     cards:
       {{ tile("light.utility", "utility") }}
@@ -41,6 +68,8 @@ cards:
         color: accent
         entity: light.galley
         name: Galley
+    view_layout:
+      grid-area: group1
   - type: horizontal-stack
     cards:
       - features:
@@ -55,6 +84,8 @@ cards:
         color: accent
         name: Pendant
         entity: light.pendant
+    view_layout:
+        grid-area: group2
   - type: horizontal-stack
     cards:
       - features:
@@ -69,6 +100,8 @@ cards:
         color: accent
         name: Bathroom
         entity: light.bathroom
+    view_layout:
+        grid-area: group3
   - type: horizontal-stack
     cards:
       - features:
@@ -83,6 +116,8 @@ cards:
         color: accent
         name: Lounge Wall
         entity: light.lounge_wall
+    view_layout:
+        grid-area: group4
   - type: horizontal-stack
     cards:
       - features:
@@ -97,6 +132,8 @@ cards:
         color: accent
         name: Bedroom Wall
         entity: light.bedroom_wall
+    view_layout:
+        grid-area: group5
   - type: horizontal-stack
     cards:
       - features:
@@ -105,6 +142,8 @@ cards:
         color: accent
         name: Gunwale
         entity: light.gunwale
+    view_layout:
+        grid-area: group6
   - type: entities
     entities:
       - entity: switch.switch_1
@@ -117,8 +156,12 @@ cards:
         name: Tunnel Light
     title: 4 channel relay board
     show_header_toggle: false
+    view_layout:
+        grid-area: group7
   - type: entities
     title: Inverter Request
     entities:
       - input_select.inverter_switch_request
       - sensor.victron_inverter
+    view_layout:
+        grid-area: group8
