@@ -53,14 +53,14 @@
       precision: 3
     - name: "RUT955 GPS satellite count"
       unique_id: "f6ead690-ae89-49dd-b4e4-228fbced1f0d"
-      scan_interval: 120
+      scan_interval: 300
       slave: 1
       address: 181
       count: 2
       data_type: uint32
     - name: "RUT955 GPS accuracy"
       unique_id: "ae3532eb-908e-4fd2-9567-3e0198654b59"
-      scan_interval: 120
+      scan_interval: 300
       slave: 1
       address: 183
       count: 2
@@ -204,7 +204,7 @@
       data_type: uint16
     - name: "Victron GPS number of satellites"
       unique_id: "62f8fdc6-3a24-4c3e-8cb4-c53185b5a723"
-      scan_interval: 30
+      scan_interval: 300
       slave: 100
       address: 2807
       data_type: uint16
