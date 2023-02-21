@@ -1,7 +1,7 @@
 title: Climate
 path: climate
 theme: Backend-selected
-icon: mdi:map
+icon: mdi:thermometer
 type: custom:grid-layout
 layout:
   grid-template-columns: 1fr 1fr 1fr 1fr
