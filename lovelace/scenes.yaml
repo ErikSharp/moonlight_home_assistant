@@ -1,21 +1,41 @@
+# lovelace_gen
+
+{% macro button(name, entity, icon, grid_area) %}
+  - name: {{ name }}
+    type: button
+    entity: {{ entity }}
+    show_state: false
+    icon: {{ icon }}
+    icon_height: 50px
+    tap_action:
+      action: call-service
+      service: scene.turn_on
+      data:
+          entity_id: {{ entity }}
+    view_layout:
+      grid-area: {{ grid_area }}
+{% endmacro %}
+
 title: Scenes
 path: scenes
 theme: Backend-selected
 icon: mdi:tune-vertical
 type: custom:grid-layout
 layout:
-  grid-template-columns: auto 20% 20% auto
-  grid-template-rows: auto
+  grid-template-columns: repeat (4, 1fr)
+  grid-template-rows: 40px 50px repeat(1, 125px)
   grid-template-areas: |
     "back . . ."
-    ". tv int_off ."
+    "indoor-label . . ."
+    "tv int_off . ."
   mediaquery:
     "(max-width: 690px)":
-      grid-template-columns: 100%
+      grid-template-columns: 50% 50%
+      grid-template-rows: 40px 50px repeat(1, 125px)
       grid-template-areas: |
-        "back"
-        "tv"
-        "int_off"
+        "back ."
+        "indoor-label ."
+        "tv int_off"
 cards:
   - type: "custom:button-card"
     template: chip_back
@@ -23,29 +43,17 @@ cards:
       ulm_chip_back_path: /lovelace/home
     view_layout:
       grid-area: back
-  - name: TV
-    type: button
-    entity: scene.tv
-    show_state: false
-    icon: mdi:television
-    tap_action:
-      action: call-service
-      service: scene.turn_on
-      data:
-          entity_id: scene.tv
+  - type: 'custom:button-card'
+    template: card_title
+    name: Indoor Scenes
     view_layout:
-      grid-area: tv
-      place-self: center
-  - name: Interior Off
-    type: button
-    entity: scene.interior_off
-    show_state: false
-    icon: mdi:lightbulb-multiple-off
-    tap_action:
-      action: call-service
-      service: scene.turn_on
-      data:
-          entity_id: scene.interior_off
-    view_layout:
-      grid-area: int_off
-      place-self: center
+      grid-area: indoor-label
+    card_mod:
+      style: |
+        ha-card {
+          border-style: unset;
+          color: tan;
+          margin-left: 0px !important;
+        }
+  {{ button("TV", "scene.tv", "mdi:television", "tv")}}
+  {{ button("Interior Off", "scene.interior_off", "mdi:lightbulb-multiple-off", "int_off")}}
