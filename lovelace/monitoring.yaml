@@ -67,14 +67,7 @@ cards:
     columns: 3
     entities:
       - entity: sensor.victron_inverter
-        name: Inverter  
-        card_mod:
-          style: |
-            :host .name {
-              font-size: 1.5rem;
-              font-family: Georgia;
-              color: red;
-            }          
+        name: Inverter
       - entity: sensor.victron_battery_soc
         name: SOC
       - entity: sensor.battery_state
