@@ -9,6 +9,7 @@ secrets.yaml
 watchman_report.txt
 home-assistant_v2.db*
 zigbee.db*
+.HA_VERSION
 
 # directories to exclude
 /blueprints
