@@ -1,0 +1,24 @@
+scene_tv:
+  description: Set the lighting to watch the TV in the lounge
+  icon: mdi:television
+  sequence:
+    - service: light.turn_on
+      data:
+        brightness_pct: 30
+      target:
+        entity_id: light.galley
+    - service: light.turn_on
+      data:
+        brightness_pct: 30
+      target:
+        entity_id: light.lounge
+    - service: light.turn_on
+      data:
+        brightness_pct: 20
+      target:
+        entity_id: light.lounge_wall
+    - service: light.turn_on
+      data:
+        brightness_pct: 30
+      target:
+        entity_id: light.bathroom

@@ -1,0 +1,31 @@
+interior_off:
+  description: Turns off all the interior lighting
+  icon: mdi:lightbulb-multiple-off
+  sequence:
+    - service: light.turn_off
+      target:
+        entity_id: light.utility
+    - service: light.turn_off
+      target:
+        entity_id: light.galley
+    - service: light.turn_off
+      target:
+        entity_id: light.dinette
+    - service: light.turn_off
+      target:
+        entity_id: light.pendant
+    - service: light.turn_off
+      target:
+        entity_id: light.lounge
+    - service: light.turn_off
+      target:
+        entity_id: light.lounge_wall
+    - service: light.turn_off
+      target:
+        entity_id: light.bathroom
+    - service: light.turn_off
+      target:
+        entity_id: light.bedroom
+    - service: light.turn_off
+      target:
+        entity_id: light.bedroom_wall
