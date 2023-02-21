@@ -7,7 +7,6 @@ layout:
   grid-template-columns: 1fr 1fr 1fr 1fr
   grid-template-rows: auto
   grid-template-areas: |
-    "back . . ."
     ". forecast forecast ."
     "rain rain wind wind"
     "map map pressure pressure"
@@ -15,7 +14,6 @@ layout:
     "(max-width: 690px)":
       grid-template-columns: 9fr 1fr
       grid-template-areas: |
-        "back ."
         "forecast forecast"
         "rain ."
         "wind ."
@@ -23,12 +21,6 @@ layout:
         "pressure pressure"
 badges: []
 cards:
-  - type: "custom:button-card"
-    template: chip_back
-    variables:
-      ulm_chip_back_path: /lovelace/home
-    view_layout:
-      grid-area: back
   - type: custom:config-template-card
     entities:
       - sensor.gps_latitude_coordinate

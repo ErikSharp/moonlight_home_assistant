@@ -34,9 +34,8 @@ icon: mdi:lightbulb-on
 type: custom:grid-layout
 layout:
   grid-template-columns: repeat (4, 1fr)
-  grid-template-rows: 40px 50px repeat(4, 125px) 50px 200px
+  grid-template-rows: 50px repeat(4, 125px) 50px 200px
   grid-template-areas: |
-    "back . . ."
     "lights-label . . ."
     "stern stern_omni engine utility"
     "galley dinette pendant gunwale"
@@ -47,9 +46,8 @@ layout:
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 50% 50%
-      grid-template-rows: 40px 50px repeat(7, 125px) 50px 200px
+      grid-template-rows: 50px repeat(7, 125px) 50px 200px
       grid-template-areas: |
-        "back ."
         "lights-label ."
         "stern stern_omni"
         "engine utility"
@@ -62,12 +60,6 @@ layout:
         "inverter inverter"
 badges: []
 cards:
-  - type: "custom:button-card"
-    template: chip_back
-    variables:
-      ulm_chip_back_path: /lovelace/home
-    view_layout:
-      grid-area: back
   - type: 'custom:button-card'
     template: card_title
     name: Lights

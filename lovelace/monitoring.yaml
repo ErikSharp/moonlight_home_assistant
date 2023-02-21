@@ -7,27 +7,18 @@ layout:
   grid-template-columns: 1fr 1fr
   grid-template-rows: auto
   grid-template-areas: |
-    "back ."
     "router electricity"
     "other rssi"
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 1fr
       grid-template-areas: |
-        "back"
         "router"
         "electricity"
         "other"
         "rssi"
 badges: []
 cards:
-  - type: "custom:button-card"
-    template: chip_back
-    variables:
-      ulm_chip_back_path: /lovelace/home
-    view_layout:
-      grid-area: back
-      place-self: left
   - type: gauge
     name: Router RSSI
     unit: dBm
