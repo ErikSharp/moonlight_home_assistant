@@ -4,12 +4,13 @@ theme: Backend-selected
 icon: mdi:home
 type: custom:grid-layout
 layout:
-  grid-template-columns: auto 20% 20% 20% 20% auto
-  grid-template-rows: auto 80px auto
+  grid-template-columns: auto repeat(4, 20%) auto
+  grid-template-rows: auto 80px
   grid-template-areas: |
     "picture picture picture picture picture picture"
     ". chip1 chip2 chip3 chip4 ."
     ". camera camera camera camera ."
+    ". person map map map ."
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 50% 50%
@@ -19,6 +20,8 @@ layout:
         "chip1 chip2"
         "chip3 chip4"
         "camera camera"
+        "erik lynsey"
+        "map map"
 cards:
   - type: picture
     tap_action:
@@ -69,10 +72,10 @@ cards:
       place-self: center
   - type: "custom:button-card"
     template: chip_navigate
-    label: 'Location'
+    label: 'Climate'
     variables:
-      ulm_chip_navigate_path: /lovelace/location
-      ulm_chip_navigate_icon: mdi:map
+      ulm_chip_navigate_path: /lovelace/climate
+      ulm_chip_navigate_icon: mdi:thermometer
     view_layout:
       grid-area: chip4
       place-self: center
@@ -107,3 +110,50 @@ cards:
         ha-card .card-header {
           line-height: 20px;
         }
+  - type: tile
+    name: Erik
+    show_entity_picture: true
+    entity: person.erik
+    view_layout:
+      grid-area: erik
+      place-self: start stretch
+      show:
+        mediaquery: "(max-width: 690px)"
+  - type: tile
+    name: Lynsey
+    show_entity_picture: true
+    entity: person.lynsey
+    view_layout:
+      grid-area: lynsey
+      place-self: start stretch
+      show:
+        mediaquery: "(max-width: 690px)"
+  - type: vertical-stack
+    cards:
+      - type: tile
+        name: Erik
+        show_entity_picture: true
+        entity: person.erik
+      - type: tile
+        name: Lynsey
+        show_entity_picture: true
+        entity: person.lynsey
+    view_layout:
+      grid-area: person
+      show:
+        mediaquery: "(min-width: 691px)"
+  - type: map
+    aspect_ratio: "16:9"
+    default_zoom: 6
+    card_mod:
+      style: |
+        ha-map {
+          position: inherit !important;
+        }
+    entities:
+      - entity: person.erik
+      - entity: person.lynsey
+      - entity: zone.home
+    hours_to_show: 8
+    view_layout:
+      grid-area: map

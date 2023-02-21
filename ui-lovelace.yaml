@@ -14,4 +14,4 @@ views:
   - !include lovelace/control.yaml
   - !include lovelace/scenes.yaml
   - !include lovelace/monitoring.yaml
-  - !include lovelace/location.yaml
+  - !include lovelace/climate.yaml

@@ -1,5 +1,5 @@
-title: Location
-path: location
+title: Climate
+path: climate
 theme: Backend-selected
 icon: mdi:map
 type: custom:grid-layout
@@ -51,31 +51,6 @@ cards:
       aspect_ratio: 100%
     view_layout:
       grid-area: wind
-  - type: vertical-stack
-    cards:
-      - type: horizontal-stack
-        cards:
-          - type: tile
-            name: Erik
-            show_entity_picture: true
-            entity: person.erik
-          - type: tile
-            name: Lynsey
-            show_entity_picture: true
-            entity: person.lynsey
-      - type: map
-        card_mod:
-          style: |
-            ha-map {
-              position: inherit !important;
-            }
-        entities:
-          - entity: person.erik
-          - entity: person.lynsey
-          - entity: zone.home
-        hours_to_show: 8
-    view_layout:
-      grid-area: map
   - chart_type: line
     period: hour
     days_to_show: 30
