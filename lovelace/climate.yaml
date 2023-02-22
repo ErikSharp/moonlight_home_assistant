@@ -23,8 +23,8 @@ badges: []
 cards:
   - type: custom:config-template-card
     entities:
-      - sensor.gps_latitude_coordinate
-      - sensor.gps_longitude_coordinate
+      - sensor.rut955_gps_latitude_coordinate
+      - sensor.rut955_gps_longitude_coordinate
     card:
       type: iframe
       url: >-
@@ -34,8 +34,8 @@ cards:
       grid-area: rain
   - type: custom:config-template-card
     entities:
-      - sensor.gps_latitude_coordinate
-      - sensor.gps_longitude_coordinate
+      - sensor.rut955_gps_latitude_coordinate
+      - sensor.rut955_gps_longitude_coordinate
     card:
       type: iframe
       url: >-
