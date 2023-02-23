@@ -1,6 +1,5 @@
 # lovelace_gen
-
-{% macro tile(light, name, grid_area) %}
+{% macro tile(light, name, grid_area) -%}
   - name: {{ name }}
     features:
       - type: light-brightness
@@ -9,9 +8,9 @@
     entity: {{ light }}
     view_layout:
       grid-area: {{ grid_area }}
-{% endmacro %}
+{%- endmacro %}
 
-{% macro button(name, entity, icon, grid_area) %}
+{% macro button(name, entity, icon, grid_area) -%}
   - name: {{ name }}
     type: button
     entity: {{ entity }}
@@ -25,7 +24,7 @@
         entity_id: {{ entity }}
     view_layout:
       grid-area: {{ grid_area }}
-{% endmacro %}
+{%- endmacro %}
 
 title: Control
 path: control
