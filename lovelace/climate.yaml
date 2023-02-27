@@ -4,23 +4,78 @@ theme: Backend-selected
 icon: mdi:thermometer
 type: custom:grid-layout
 layout:
-  grid-template-columns: 1fr 1fr 1fr 1fr
+  grid-template-columns: repeat (12, 1fr)
   grid-template-rows: auto
   grid-template-areas: |
-    ". forecast forecast ."
-    "rain rain wind wind"
-    "map map pressure pressure"
+    "boat_temp boat_temp boat_temp boat_temp boat_humidity boat_humidity boat_humidity boat_humidity boat_pressure boat_pressure boat_pressure boat_pressure"
+    ". . . forecast forecast forecast forecast forecast forecast . . ."
+    "rain rain rain rain rain rain wind wind wind wind wind wind"
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 9fr 1fr
       grid-template-areas: |
+        "boat_temp boat_temp"
+        "boat_humidity boat_humidity"
+        "boat_pressure boat_pressure"
         "forecast forecast"
         "rain ."
         "wind ."
-        "map ."
-        "pressure pressure"
 badges: []
 cards:
+  - type: custom:mini-graph-card
+    name: Boat Temp - 1 week
+    hours_to_show: 168
+    points_per_hour: 0.5
+    animate: true
+    entities:
+      - entity: sensor.lumi_lumi_weather_temperature
+    show:
+      labels: true
+    color_thresholds:
+      - value: 24
+        color: "#ff0000"
+      - value: 13
+        color: "#ffa500"
+      - value: 5
+        color: "#0000ff"
+    view_layout:
+      grid-area: boat_temp
+  - type: custom:mini-graph-card
+    name: Boat Humidity - 1 week
+    hours_to_show: 168
+    points_per_hour: 0.5
+    animate: true
+    entities:
+      - entity: sensor.lumi_lumi_weather_humidity
+    show:
+      labels: true
+    color_thresholds:
+      - value: 60
+        color: "#ff0000"        
+      - value: 30
+        color: "#00ff00"
+      - value: 0
+        color: "#ff0000"
+    view_layout:
+      grid-area: boat_humidity
+  - type: custom:mini-graph-card
+    name: Boat Barometer - 1 week
+    hours_to_show: 168
+    points_per_hour: 0.5
+    animate: true
+    entities:
+      - entity: sensor.lumi_lumi_weather_pressure
+    show:
+      labels: true
+    color_thresholds:
+      - value: 1020
+        color: "#ff0000"        
+      - value: 1013
+        color: "#00ff00"
+      - value: 1000
+        color: "#0000ff"
+    view_layout:
+      grid-area: boat_pressure
   - type: custom:config-template-card
     entities:
       - sensor.rut955_gps_latitude_coordinate
@@ -43,17 +98,6 @@ cards:
       aspect_ratio: 100%
     view_layout:
       grid-area: wind
-  - chart_type: line
-    period: hour
-    days_to_show: 30
-    type: statistics-graph
-    entities:
-      - sensor.average_pressure
-    title: "30 day pressures"
-    stat_types:
-      - mean
-    view_layout:
-      grid-area: pressure
   - type: vertical-stack
     cards:
       - type: weather-forecast
