@@ -7,18 +7,88 @@ layout:
   grid-template-columns: 1fr 1fr
   grid-template-rows: auto
   grid-template-areas: |
+    "erik1 erik2"
     "router electricity"
     "other rssi"
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 1fr
       grid-template-areas: |
+        "erik1"
+        "erik2"
         "router"
         "electricity"
         "other"
         "rssi"
 badges: []
 cards:
+  - type: picture-elements
+    image: /local/images/BatteryBackground.png
+    elements:
+      - type: image
+        image: /local/images/Batt90.png
+        style:
+          top: 55%
+          left: 80%
+          width: 30%
+      - type: custom:mini-graph-card
+        name: Battery SOC / week
+        hours_to_show: 168
+        points_per_hour: 0.3
+        animate: true
+        entities:
+          - entity: sensor.victron_battery_soc
+        show:
+          labels: true
+          fill: fade
+        color_thresholds:
+          - value: 100
+            color: "#00ff00"
+          - value: 70
+            color: "#ffa500"
+          - value: 30
+            color: "#ff0000"
+        height: 200
+        style:
+          bottom: -35%
+          left: 32%
+          width: 60%
+    view_layout:
+      grid-area: erik1
+  - type: picture-elements
+    image: /local/images/BatteryBackground.png
+    elements:
+      - type: state-label
+        prefix: "SOC "
+        entity: sensor.victron_battery_soc
+        style:
+          top: 30%
+          left: 20%
+      - type: image
+        image: /local/images/BatteryBackgroundOverlay.png
+        filter: blur(5px) grayscale(100%)
+        style:
+          transform: none
+          top: 0%
+          left: 0%
+      - type: image
+        image: /local/images/Battery@2x.png
+        filter: hue-rotate(90deg)
+        style:          
+          top: 50%
+          left: 80%
+          width: 20%
+      - type: image
+        image: /local/images/Path1@3x.png
+        style:
+          width: 80%
+      - type: image
+        image: /local/images/Path1@3x_animation.gif
+        filter: opacity(50%)
+        style:
+          width: 80%
+    view_layout:
+      grid-area: erik2
   - type: gauge
     name: Router RSSI
     unit: dBm
@@ -55,7 +125,7 @@ cards:
       grid-area: router
   - type: glance
     title: Electricity
-    columns: 3
+    columns: 4
     entities:
       - entity: sensor.victron_inverter
         name: Inverter
@@ -77,6 +147,8 @@ cards:
         name: AC Consumption
       - entity: sensor.victron_dc_consumption
         name: DC Consumption
+      - entity: sensor.victron_pv_dc_coupled_power
+        name: PV Power
     view_layout:
       grid-area: electricity
   - type: entities
