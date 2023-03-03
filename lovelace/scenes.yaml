@@ -5,30 +5,16 @@ icon: mdi:tune-vertical
 type: custom:grid-layout
 layout:
   grid-template-columns: repeat (4, 1fr)
-  grid-template-rows: 50px repeat(1, 125px)
+  grid-template-rows: repeat(1, 125px)
   grid-template-areas: |
-    "indoor-label . . ."
     "tv int_off . ."
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 50% 50%
-      grid-template-rows: 50px repeat(1, 125px)
+      grid-template-rows: repeat(1, 125px)
       grid-template-areas: |
-        "indoor-label ."
         "tv int_off"
 cards:
-  - type: 'custom:button-card'
-    template: card_title
-    name: Indoor Scenes
-    view_layout:
-      grid-area: indoor-label
-    card_mod:
-      style: |
-        ha-card {
-          border-style: unset;
-          color: tan;
-          margin-left: 0px !important;
-        }
   - name: TV
     type: button
     entity: script.scene_tv

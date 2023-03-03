@@ -5,21 +5,18 @@ icon: mdi:lightbulb-on
 type: custom:grid-layout
 layout:
   grid-template-columns: repeat (4, 1fr)
-  grid-template-rows: 50px repeat(4, 125px) 50px 200px
+  grid-template-rows: repeat(4, 125px) 200px
   grid-template-areas: |
-    "lights-label . . ."
     "stern stern_omni engine utility"
     "galley dinette pendant gunwale"
     ". lounge lounge_wall ." 
     "bathroom bedroom bedroom_wall tunnel"
-    "other . . ."
     ". inverter inverter ."
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 50% 50%
-      grid-template-rows: 50px repeat(7, 125px) 50px 200px
+      grid-template-rows: repeat(7, 125px) 200px
       grid-template-areas: |
-        "lights-label ."
         "stern stern_omni"
         "engine utility"
         "galley dinette"
@@ -27,22 +24,9 @@ layout:
         "lounge lounge_wall"
         "bathroom bedroom"
         "bedroom_wall tunnel"
-        "other ."
         "inverter inverter"
 badges: []
 cards:
-  - type: 'custom:button-card'
-    template: card_title
-    name: Lights
-    view_layout:
-      grid-area: lights-label
-    card_mod:
-      style: |
-        ha-card {
-          border-style: unset;
-          color: tan;
-          margin-left: 0px !important;
-        }
   - name: Utility
     features:
       - type: light-brightness
@@ -170,18 +154,6 @@ cards:
         entity_id: switch.switch_4
     view_layout:
       grid-area: tunnel
-  - type: 'custom:button-card'
-    template: card_title
-    name: Other
-    view_layout:
-      grid-area: other
-    card_mod:
-      style: |
-        ha-card {
-          border-style: unset;
-          color: tan;
-          margin-left: 0px !important;
-        }
   - type: entities
     title: Inverter
     entities:
