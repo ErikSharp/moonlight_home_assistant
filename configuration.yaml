@@ -20,7 +20,3 @@ scene: !include scenes.yaml
 # alert: !include alerts.yaml
 modbus: !include modbus.yaml
 template: !include templates.yaml
-
-spotcast:
-  sp_dc: !secret sp_dc
-  sp_key: !secret sp_key
