@@ -41,7 +41,6 @@ cards:
       show:
         mediaquery: "(max-width: 690px)"
   - type: picture-elements
-    title: Bow Camera
     image: nothing
     camera_view: auto
     camera_image: camera.bowcam_sub
@@ -52,25 +51,26 @@ cards:
         title: Tunnel Light
         style:
           right: 100px
-          top: -25px
+          top: 25px
+          background: rgba(0, 0, 0, .7)
+          border-radius: 10px
         tap_action: none
       - type: state-icon
         entity: binary_sensor.bowcam_motion
         style:
           right: 50px
-          top: -25px
+          top: 25px
+          background: rgba(0, 0, 0, .7)
+          border-radius: 10px
       - type: state-icon
         entity: binary_sensor.bowcam_person
         style:
           right: 0px
-          top: -25px    
+          top: 25px
+          background: rgba(0, 0, 0, .7)
+          border-radius: 10px
     view_layout:
       grid-area: camera
-    card_mod:
-      style: |
-        ha-card .card-header {
-          line-height: 20px;
-        }
   - type: tile
     name: Erik
     show_entity_picture: true
