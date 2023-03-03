@@ -149,6 +149,13 @@
       device_class: duration
       unit_of_measurement: "s"
       scale: 100
+    - name: "Victron PV - DC coupled power"
+      unique_id: "13c469fe-b5b2-4814-8a65-54c11474ff58"
+      slave: 100
+      address: 850
+      data_type: uint16
+      device_class: power
+      unit_of_measurement: "W"
     - name: "Victron DC Consumption"
       unique_id: "db44ba54-5c14-40f3-86fb-392b25a64428"
       slave: 100
