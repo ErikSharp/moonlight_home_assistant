@@ -11,8 +11,6 @@ homeassistant:
 logger:
   default: info
 
-lovelace_gen:
-
 lovelace:
   mode: yaml
   resources:

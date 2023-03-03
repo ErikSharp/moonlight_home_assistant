@@ -1,31 +1,3 @@
-# lovelace_gen
-{% macro tile(light, name, grid_area) -%}
-  - name: {{ name }}
-    features:
-      - type: light-brightness
-    type: tile
-    color: accent
-    entity: {{ light }}
-    view_layout:
-      grid-area: {{ grid_area }}
-{%- endmacro %}
-
-{% macro button(name, entity, icon, grid_area) -%}
-  - name: {{ name }}
-    type: button
-    entity: {{ entity }}
-    show_state: true
-    icon: {{ icon }}
-    icon_height: 50px
-    tap_action:
-      action: call-service
-      service: switch.toggle
-      data:
-        entity_id: {{ entity }}
-    view_layout:
-      grid-area: {{ grid_area }}
-{%- endmacro %}
-
 title: Control
 path: control
 theme: Backend-selected
@@ -71,20 +43,133 @@ cards:
           color: tan;
           margin-left: 0px !important;
         }
-  {{ tile("light.utility", "Utility", "utility") }}
-  {{ tile("light.galley", "Galley", "galley") }}
-  {{ tile("light.dinette", "Dinette", "dinette") }}
-  {{ tile("light.pendant", "Pendant", "pendant") }}
-  {{ tile("light.stern", "Stern", "stern") }}
-  {{ tile("light.bathroom", "Bathroom", "bathroom") }}
-  {{ tile("light.lounge", "Lounge", "lounge") }}
-  {{ tile("light.lounge_wall", "Lounge Wall", "lounge_wall") }}
-  {{ tile("light.bedroom", "Bedroom", "bedroom") }}
-  {{ tile("light.bedroom_wall", "Bedroom Wall", "bedroom_wall") }}
-  {{ tile("light.gunwale", "Gunwale", "gunwale") }}
-  {{ button("Engine Bay", "switch.switch_1", "mdi:engine", "engine")}}
-  {{ button("Stern Light", "switch.switch_2", "mdi:bulkhead-light", "stern_omni")}}
-  {{ button("Tunnel Light", "switch.switch_4", "mdi:car-light-high", "tunnel")}}
+  - name: Utility
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.utility
+    view_layout:
+      grid-area: utility
+  - name: Galley
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.galley
+    view_layout:
+      grid-area: galley
+  - name: Dinette
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.dinette
+    view_layout:
+      grid-area: dinette
+  - name: Pendant
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.pendant
+    view_layout:
+      grid-area: pendant
+  - name: Stern
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.stern
+    view_layout:
+      grid-area: stern
+  - name: Bathroom
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.bathroom
+    view_layout:
+      grid-area: bathroom
+  - name: Lounge
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.lounge
+    view_layout:
+      grid-area: lounge
+  - name: Lounge Wall
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.lounge_wall
+    view_layout:
+      grid-area: lounge_wall
+  - name: Bedroom
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.bedroom
+    view_layout:
+      grid-area: bedroom
+  - name: Bedroom Wall
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.bedroom_wall
+    view_layout:
+      grid-area: bedroom_wall
+  - name: Gunwale
+    features:
+      - type: light-brightness
+    type: tile
+    color: accent
+    entity: light.gunwale
+    view_layout:
+      grid-area: gunwale
+  - name: Engine Bay
+    type: button
+    entity: switch.switch_1
+    show_state: true
+    icon: mdi:engine
+    icon_height: 50px
+    tap_action:
+      action: call-service
+      service: switch.toggle
+      data:
+        entity_id: switch.switch_1
+    view_layout:
+      grid-area: engine
+  - name: Stern Light
+    type: button
+    entity: switch.switch_2
+    show_state: true
+    icon: mdi:bulkhead-light
+    icon_height: 50px
+    tap_action:
+      action: call-service
+      service: switch.toggle
+      data:
+        entity_id: switch.switch_2
+    view_layout:
+      grid-area: stern_omni
+  - name: Tunnel Light
+    type: button
+    entity: switch.switch_4
+    show_state: true
+    icon: mdi:car-light-high
+    icon_height: 50px
+    tap_action:
+      action: call-service
+      service: switch.toggle
+      data:
+        entity_id: switch.switch_4
+    view_layout:
+      grid-area: tunnel
   - type: 'custom:button-card'
     template: card_title
     name: Other
