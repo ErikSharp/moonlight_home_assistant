@@ -106,11 +106,6 @@ cards:
   - type: map
     aspect_ratio: "16:9"
     default_zoom: 6
-    card_mod:
-      style: |
-        ha-map {
-          position: inherit !important;
-        }
     entities:
       - entity: person.erik
       - entity: person.lynsey
