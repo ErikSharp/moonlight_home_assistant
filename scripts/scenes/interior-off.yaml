@@ -16,6 +16,9 @@ interior_off:
         entity_id: light.pendant
     - service: light.turn_off
       target:
+        entity_id: light.gunwale
+    - service: light.turn_off
+      target:
         entity_id: light.lounge
     - service: light.turn_off
       target:
