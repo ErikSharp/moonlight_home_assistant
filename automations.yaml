@@ -4,16 +4,16 @@
   trigger:
   - platform: state
     entity_id:
-    - sensor.gps_latitude_coordinate
-    - sensor.gps_longitude_coordinate
+    - sensor.rut955_gps_latitude_coordinate
+    - sensor.rut955_gps_longitude_coordinate
   condition: []
   action:
   - service: homeassistant.set_location
     data:
-      latitude: '{{ states(''sensor.gps_latitude_coordinate'') }}
+      latitude: '{{ states(''sensor.rut955_gps_latitude_coordinate'') }}
 
         '
-      longitude: '{{ states(''sensor.gps_longitude_coordinate'') }}
+      longitude: '{{ states(''sensor.rut955_gps_longitude_coordinate'') }}
 
         '
   mode: single
@@ -67,14 +67,200 @@
       hub: cerbo
       slave: 227
       address: 33
-      value: |
-        {% if is_state("input_select.inverter_switch_request", "Charger Only") %}
+      value: '{% if is_state("input_select.inverter_switch_request", "Charger Only")
+        %}
+
         1
-        {% elif is_state("input_select.inverter_switch_request", "Inverter Only") %}
+
+        {% elif is_state("input_select.inverter_switch_request", "Inverter Only")
+        %}
+
         2
+
         {% elif is_state("input_select.inverter_switch_request", "On") %}
+
         3
+
         {% elif is_state("input_select.inverter_switch_request", "Off") %}
+
         4
+
         {% endif %}
+
+        '
+  mode: single
+- id: '1678026953905'
+  alias: Set Highest PV
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.victron_pv_dc_coupled_power
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.victron_pv_dc_coupled_power
+    above: input_number.highest_pv_power
+  action:
+  - service: input_number.set_value
+    data:
+      value: '{{ states(''sensor.victron_pv_dc_coupled_power'') }}'
+    target:
+      entity_id: input_number.highest_pv_power
+  mode: single
+- id: '1679163813439'
+  alias: Btn utility toggle utility
+  description: ''
+  trigger:
+  - device_id: c996624dccbd8e59d3ab1630e9b48c23
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness: 128
+    target:
+      entity_id: light.utility
+  mode: single
+- id: '1679164883036'
+  alias: Btn utility long press
+  description: ''
+  trigger:
+  - device_id: c996624dccbd8e59d3ab1630e9b48c23
+    domain: zha
+    platform: device
+    type: remote_button_long_press
+    subtype: remote_button_long_press
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness: 64
+    target:
+      device_id: 947d141dbcc1d7260ad408a60a1ca427
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 250
+  - service: light.turn_on
+    data:
+      brightness: 255
+    target:
+      device_id: f7603e249e43a97a0c3820e129031f74
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 250
+  - service: light.turn_on
+    data:
+      brightness: 255
+    target:
+      device_id: 4954ea1dbe78384441fe452a9638f09c
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 250
+  - service: light.turn_on
+    data:
+      brightness: 153
+    target:
+      device_id: dd99b65b30b2e938c0103bf9be6e23cf
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 250
+  - service: light.turn_on
+    data:
+      brightness: 153
+    target:
+      device_id: 99df5007e25ccfe7bd8bd5891b8a2435
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 250
+  - service: light.turn_on
+    data:
+      brightness: 191
+    target:
+      device_id: ba26965bd2187155f65813dbad58d5f7
+  mode: single
+- id: '1679165966279'
+  alias: Btn galley short press
+  description: ''
+  trigger:
+  - device_id: 89a64ef4e6d76c4e62d9c7b1158fc9b9
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: f7603e249e43a97a0c3820e129031f74
+  mode: single
+- id: '1679166127374'
+  alias: Btn galley dbl click
+  description: ''
+  trigger:
+  - device_id: 89a64ef4e6d76c4e62d9c7b1158fc9b9
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 50
+    target:
+      device_id: 947d141dbcc1d7260ad408a60a1ca427
+  mode: single
+- id: '1679211298440'
+  alias: Btn lounge short press
+  description: ''
+  trigger:
+  - device_id: f7e34cb3c467697fe5ccaa612dec77c8
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: ba26965bd2187155f65813dbad58d5f7
+  mode: single
+- id: '1679211552037'
+  alias: Btn lounge dbl click
+  description: ''
+  trigger:
+  - device_id: f7e34cb3c467697fe5ccaa612dec77c8
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: 67e73540bdc3a27991dea0554ade67c7
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: b9d3b7dae8376197aaac6a09a3168452
   mode: single
