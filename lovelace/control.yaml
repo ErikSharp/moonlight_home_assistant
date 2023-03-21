@@ -5,8 +5,9 @@ icon: mdi:lightbulb-on
 type: custom:grid-layout
 layout:
   grid-template-columns: repeat (4, 1fr)
-  grid-template-rows: repeat(4, 125px) 200px
+  grid-template-rows: repeat(5, 125px) 200px
   grid-template-areas: |
+    ". immersion . ."
     "stern stern_omni engine utility"
     "galley dinette pendant gunwale"
     ". lounge lounge_wall ." 
@@ -15,8 +16,9 @@ layout:
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 50% 50%
-      grid-template-rows: repeat(7, 125px) 200px
+      grid-template-rows: repeat(8, 125px) 200px
       grid-template-areas: |
+        "immersion ."
         "stern stern_omni"
         "engine utility"
         "galley dinette"
@@ -141,6 +143,19 @@ cards:
         entity_id: switch.switch_2
     view_layout:
       grid-area: stern_omni
+  - name: Immersion Heater
+    type: button
+    entity: switch.switch_3
+    show_state: true
+    icon: mdi:hot-tub
+    icon_height: 50px
+    tap_action:
+      action: call-service
+      service: switch.toggle
+      data:
+        entity_id: switch.switch_3
+    view_layout:
+      grid-area: immersion
   - name: Tunnel Light
     type: button
     entity: switch.switch_4
