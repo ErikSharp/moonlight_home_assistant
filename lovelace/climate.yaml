@@ -32,11 +32,11 @@ cards:
     show:
       labels: true
     color_thresholds:
-      - value: 24
+      - value: 30
         color: "#ff0000"
-      - value: 13
+      - value: 21
         color: "#ffa500"
-      - value: 5
+      - value: 15
         color: "#0000ff"
     view_layout:
       grid-area: boat_temp
