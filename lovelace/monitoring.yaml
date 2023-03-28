@@ -7,6 +7,7 @@ layout:
   grid-template-columns: 1fr 1fr
   grid-template-rows: auto
   grid-template-areas: |
+    "sensors ."
     "example example2"
     "erik1 erik2"
     "router electricity"
@@ -15,6 +16,7 @@ layout:
     "(max-width: 690px)":
       grid-template-columns: 1fr
       grid-template-areas: |
+        "sensors"
         "example"
         "example2"
         "erik1"
@@ -25,6 +27,15 @@ layout:
         "rssi"
 badges: []
 cards:
+  - type: entities
+    entities:
+      - entity: sensor.lumi_lumi_weather_temperature
+      - entity: sensor.lumi_lumi_weather_temperature_2
+      - entity: sensor.lumi_lumi_weather_temperature_3
+      - entity: sensor.lumi_lumi_weather_temperature_4
+    title: Temp sensors
+    view_layout:
+      grid-area: sensors
   - type: "custom:content-card-example"
     entity: sensor.lenphone_battery_level
     card_mod:
