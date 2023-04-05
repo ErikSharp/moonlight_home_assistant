@@ -51,9 +51,13 @@ cards:
       labels: true
     color_thresholds:
       - value: 60
-        color: "#ff0000"        
-      - value: 30
+        color: "#ff0000"
+      - value: 55
+        color: "#00ff00"        
+      - value: 35
         color: "#00ff00"
+      - value: 30
+        color: "#ff0000"
       - value: 0
         color: "#ff0000"
     view_layout:
