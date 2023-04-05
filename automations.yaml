@@ -466,9 +466,16 @@
   alias: Battery fully charged
   description: ''
   trigger:
-  - platform: numeric_state
-    entity_id: sensor.victron_battery_soc
-    above: 99
+  - platform: state
+    entity_id:
+    - sensor.victron_battery_state
+    from: '1'
+    to: '0'
+  - platform: state
+    entity_id:
+    - sensor.victron_battery_state
+    from: '1'
+    to: '2'
   condition:
   - condition: or
     conditions:
@@ -478,12 +485,10 @@
     - condition: state
       entity_id: sensor.victron_inverter
       state: Charger Only
+  - condition: numeric_state
+    entity_id: sensor.victron_battery_soc
+    above: '99'
   action:
-  - delay:
-      hours: 0
-      minutes: 10
-      seconds: 0
-      milliseconds: 0
   - if:
     - condition: state
       entity_id: sensor.victron_inverter
