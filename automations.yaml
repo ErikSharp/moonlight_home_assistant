@@ -135,61 +135,10 @@
     subtype: remote_button_long_press
   condition: []
   action:
-  - service: light.turn_on
-    data:
-      brightness: 64
+  - service: switch.toggle
+    data: {}
     target:
-      device_id: 947d141dbcc1d7260ad408a60a1ca427
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 0
-      milliseconds: 250
-  - service: light.turn_on
-    data:
-      brightness: 255
-    target:
-      device_id: f7603e249e43a97a0c3820e129031f74
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 0
-      milliseconds: 250
-  - service: light.turn_on
-    data:
-      brightness: 255
-    target:
-      device_id: 4954ea1dbe78384441fe452a9638f09c
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 0
-      milliseconds: 250
-  - service: light.turn_on
-    data:
-      brightness: 153
-    target:
-      device_id: dd99b65b30b2e938c0103bf9be6e23cf
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 0
-      milliseconds: 250
-  - service: light.turn_on
-    data:
-      brightness: 153
-    target:
-      device_id: 99df5007e25ccfe7bd8bd5891b8a2435
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 0
-      milliseconds: 250
-  - service: light.turn_on
-    data:
-      brightness: 191
-    target:
-      device_id: ba26965bd2187155f65813dbad58d5f7
+      entity_id: switch.switch_1
   mode: single
 - id: '1679165966279'
   alias: Btn galley short press
@@ -263,4 +212,294 @@
       brightness_pct: 100
     target:
       device_id: b9d3b7dae8376197aaac6a09a3168452
+  mode: single
+- id: '1679666360921'
+  alias: Btn bathroom short press
+  description: ''
+  trigger:
+  - device_id: f8add7226cc43065ba0d41a885641f6d
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: 2bed79d48e31958dd231674236920bb3
+  mode: single
+- id: '1679666457123'
+  alias: Btn bathroom dbl click
+  description: ''
+  trigger:
+  - device_id: f8add7226cc43065ba0d41a885641f6d
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: ba26965bd2187155f65813dbad58d5f7
+  mode: single
+- id: '1679666760584'
+  alias: Btn bed port short press
+  description: ''
+  trigger:
+  - device_id: c6a95799ebd0f560c138cc6e4448554c
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: 2bed79d48e31958dd231674236920bb3
+  mode: single
+- id: '1679666805259'
+  alias: Btn bed port dbl click
+  description: ''
+  trigger:
+  - device_id: c6a95799ebd0f560c138cc6e4448554c
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: ba26965bd2187155f65813dbad58d5f7
+  mode: single
+- id: '1679667092858'
+  alias: Btn bed starboard short press
+  description: ''
+  trigger:
+  - device_id: 5d526af78ef7ad832683ebd3e2a42659
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: 2bed79d48e31958dd231674236920bb3
+  mode: single
+- id: '1679667145962'
+  alias: Btn bed starboard dbl click
+  description: ''
+  trigger:
+  - device_id: 5d526af78ef7ad832683ebd3e2a42659
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: ba26965bd2187155f65813dbad58d5f7
+  mode: single
+- id: '1679668004353'
+  alias: Btn desk short press
+  description: ''
+  trigger:
+  - device_id: 749db8c66fc6001df75d653b22ebf0c9
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: 2bed79d48e31958dd231674236920bb3
+  mode: single
+- id: '1679668061402'
+  alias: Btn desk dbl click
+  description: ''
+  trigger:
+  - device_id: 749db8c66fc6001df75d653b22ebf0c9
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      device_id: ba26965bd2187155f65813dbad58d5f7
+  mode: single
+- id: '1679668871304'
+  alias: Hatch opened
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: cf8c687e802019a2bfbee2c089a13ea2
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening
+    domain: binary_sensor
+  condition:
+  - condition: device
+    type: is_off
+    device_id: 947d141dbcc1d7260ad408a60a1ca427
+    entity_id: light.utility
+    domain: light
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+    target:
+      device_id: 947d141dbcc1d7260ad408a60a1ca427
+  mode: single
+- id: '1679680530478'
+  alias: Hatch closed
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: cf8c687e802019a2bfbee2c089a13ea2
+    entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  - service: light.turn_off
+    data: {}
+    target:
+      device_id: 947d141dbcc1d7260ad408a60a1ca427
+  mode: restart
+- id: '1679683259991'
+  alias: Btn utility dbl click
+  description: ''
+  trigger:
+  - device_id: c996624dccbd8e59d3ab1630e9b48c23
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+    target:
+      device_id: bbedb2248ef962ed0ec630e93a4017a4
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.switch_2
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 20
+      milliseconds: 0
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.switch_2
+  mode: single
+- id: '1679985766975'
+  alias: Battery depleted below threshold
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.victron_battery_soc
+    below: input_number.shore_power_threshold
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.victron_inverter
+      state: Inverter Only
+    - condition: state
+      entity_id: sensor.victron_inverter
+      state: 'Off'
+  action:
+  - if:
+    - condition: state
+      entity_id: sensor.victron_inverter
+      state: 'Off'
+    then:
+    - service: modbus.write_register
+      data:
+        address: 33
+        slave: 227
+        value: 1
+        hub: cerbo
+    else:
+    - service: modbus.write_register
+      data:
+        address: 33
+        slave: 227
+        value: 3
+        hub: cerbo
+  mode: single
+- id: '1679986366744'
+  alias: Battery fully charged
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.victron_battery_soc
+    above: 99
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.victron_inverter
+      state: 'On'
+    - condition: state
+      entity_id: sensor.victron_inverter
+      state: Charger Only
+  action:
+  - delay:
+      hours: 0
+      minutes: 10
+      seconds: 0
+      milliseconds: 0
+  - if:
+    - condition: state
+      entity_id: sensor.victron_inverter
+      state: Charger Only
+    then:
+    - service: modbus.write_register
+      data:
+        address: 33
+        slave: 227
+        value: 4
+        hub: cerbo
+    else:
+    - service: modbus.write_register
+      data:
+        address: 33
+        slave: 227
+        value: 2
+        hub: cerbo
   mode: single
