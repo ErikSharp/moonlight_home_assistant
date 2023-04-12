@@ -4,19 +4,15 @@ theme: Backend-selected
 icon: mdi:gauge
 type: custom:grid-layout
 layout:
-  grid-template-columns: 1fr 1fr
+  grid-template-columns: repeat(12, 1fr)
   grid-template-areas: |
-    "temps ."
-    "sensors ."
-    "erik1 erik2"
-    "router electricity"
-    "other rssi"
+    ". . erik1 erik1 erik1 erik1 erik2 erik2 erik2 erik2 . ."
+    ". . router router router router electricity electricity electricity electricity . ."
+    ". . other other other other rssi rssi rssi rssi . ."
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 1fr
       grid-template-areas: |
-        "temps"
-        "sensors"
         "erik1"
         "erik2"
         "router"
@@ -25,45 +21,6 @@ layout:
         "rssi"
 badges: []
 cards:
-  - type: custom:mini-graph-card
-    entities:
-      - entity: sensor.lumi_lumi_weather_temperature_3
-        name: "Bedroom"
-        color: cyan
-      - entity: sensor.lumi_lumi_weather_temperature_2
-        name: "Bathroom"
-        color: blue
-      - entity: sensor.lumi_lumi_weather_temperature
-        name: "Lounge"
-        color: red
-      - entity: sun.sun
-        color: pink
-        show_line: false
-        show_points: false
-        show_legend: false
-        y_axis: secondary
-    state_map:
-      - value: "below_horizon"
-      - value: "above_horizon"
-    name: Temperatures in the last 48 hours
-    hours_to_show: 48
-    points_per_hour: 1
-    show:
-      name: true
-      legend: true
-      icon: true
-      labels: true
-    view_layout:
-      grid-area: temps
-  - type: entities
-    entities:
-      - entity: sensor.lumi_lumi_weather_temperature
-      - entity: sensor.lumi_lumi_weather_temperature_2
-      - entity: sensor.lumi_lumi_weather_temperature_3
-      - entity: sensor.lumi_lumi_weather_temperature_4
-    title: Temp sensors
-    view_layout:
-      grid-area: sensors
   - type: picture-elements
     image: /local/images/BatteryBackground.png
     elements:
