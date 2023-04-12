@@ -5,10 +5,9 @@ icon: mdi:gauge
 type: custom:grid-layout
 layout:
   grid-template-columns: 1fr 1fr
-  grid-template-rows: auto
   grid-template-areas: |
+    "temps ."
     "sensors ."
-    "example example2"
     "erik1 erik2"
     "router electricity"
     "other rssi"
@@ -16,9 +15,8 @@ layout:
     "(max-width: 690px)":
       grid-template-columns: 1fr
       grid-template-areas: |
+        "temps"
         "sensors"
-        "example"
-        "example2"
         "erik1"
         "erik2"
         "router"
@@ -27,6 +25,36 @@ layout:
         "rssi"
 badges: []
 cards:
+  - type: custom:mini-graph-card
+    entities:
+      - entity: sensor.lumi_lumi_weather_temperature_3
+        name: "Bedroom"
+        color: cyan
+      - entity: sensor.lumi_lumi_weather_temperature_2
+        name: "Bathroom"
+        color: blue
+      - entity: sensor.lumi_lumi_weather_temperature
+        name: "Lounge"
+        color: red
+      - entity: sun.sun
+        color: pink
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    state_map:
+      - value: "below_horizon"
+      - value: "above_horizon"
+    name: Temperatures in the last 48 hours
+    hours_to_show: 48
+    points_per_hour: 1
+    show:
+      name: true
+      legend: true
+      icon: true
+      labels: true
+    view_layout:
+      grid-area: temps
   - type: entities
     entities:
       - entity: sensor.lumi_lumi_weather_temperature
@@ -36,28 +64,6 @@ cards:
     title: Temp sensors
     view_layout:
       grid-area: sensors
-  - type: "custom:content-card-example"
-    entity: sensor.lenphone_battery_level
-    card_mod:
-      style: |
-        ha-card {
-          background-color: red;
-          animation-name: example;
-          animation-duration: 4s;
-          animation-iteration-count: infinite;
-        }
-
-        @keyframes example {
-          0%   {background-color: red;}
-          25%  {background-color: yellow;}
-          50%  {background-color: blue;}
-          100% {background-color: green;}
-        }
-  - type: "custom:wired-toggle-card"
-    entities:
-      - switch.switch_1
-      - switch.switch_2
-      - switch.switch_4
   - type: picture-elements
     image: /local/images/BatteryBackground.png
     elements:

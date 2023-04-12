@@ -13,10 +13,6 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-layout-card/layout-card.js
       type: module
-    - url: /local/content-card-example.js
-      type: module
-    - url: /local/wired-cards.js
-      type: module
 
 frontend:
   extra_module_url:
