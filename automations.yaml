@@ -508,3 +508,31 @@
         value: 2
         hub: cerbo
   mode: single
+- id: '1681377294414'
+  alias: Turn on electric heater in lounge
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.lumi_lumi_weather_temperature
+    below: 19
+  condition: []
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.heater_outlet_light_2
+  mode: single
+- id: '1681377387335'
+  alias: Turn off heater in lounge
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.lumi_lumi_weather_temperature
+    above: 20
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.heater_outlet_light_2
+  mode: single
