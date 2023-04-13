@@ -8,7 +8,8 @@ layout:
   grid-template-rows: auto
   grid-template-areas: |
     ". . . temps temps temps temps temps temps . . ."
-    "boat_temp boat_temp boat_temp boat_temp boat_humidity boat_humidity boat_humidity boat_humidity boat_pressure boat_pressure boat_pressure boat_pressure"
+    ". . . humidity humidity humidity humidity humidity humidity . . ."
+    ". . . boat_pressure boat_pressure boat_pressure boat_pressure boat_pressure boat_pressure . . ."
     ". . . forecast forecast forecast forecast forecast forecast . . ."
     "rain rain rain rain rain rain wind wind wind wind wind wind"
   mediaquery:
@@ -16,6 +17,7 @@ layout:
       grid-template-columns: 9fr 1fr
       grid-template-areas: |
         "temps temps"
+        "humidity humidity"
         "boat_temp boat_temp"
         "boat_humidity boat_humidity"
         "boat_pressure boat_pressure"
@@ -25,7 +27,7 @@ layout:
 badges: []
 cards:
   - type: vertical-stack
-    title: Temperatures for the last 48 hours
+    title: Temperatures - 1 week    
     cards:
       - type: horizontal-stack
         cards:
@@ -49,6 +51,7 @@ cards:
             vertical: true
       - type: custom:mini-graph-card
         height: 200
+        line_width: 3
         entities:
           - entity: sensor.lumi_lumi_weather_temperature_3
             name: "Bedroom"
@@ -68,8 +71,7 @@ cards:
         state_map:
           - value: "below_horizon"
           - value: "above_horizon"
-        name: Temperatures in the last 48 hours
-        hours_to_show: 48
+        hours_to_show: 168
         points_per_hour: 1
         show:
           name: false
@@ -79,48 +81,64 @@ cards:
           state: false
     view_layout:
       grid-area: temps
-  - type: custom:mini-graph-card
-    name: Boat Temp - 1 week
-    hours_to_show: 168
-    points_per_hour: 0.5
-    animate: true
-    entities:
-      - entity: sensor.lumi_lumi_weather_temperature
-    show:
-      labels: true
-    color_thresholds:
-      - value: 30
-        color: "#ff0000"
-      - value: 21
-        color: "#ffa500"
-      - value: 15
-        color: "#0000ff"
+  - type: vertical-stack
+    title: Humidity - 1 week
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: tile
+            entity: sensor.lumi_lumi_weather_humidity_3
+            name: Bedroom
+            icon: mdi:bed
+            color: cyan
+            vertical: true
+          - type: tile
+            entity: sensor.lumi_lumi_weather_humidity_2
+            name: Bathroom
+            icon: mdi:shower-head
+            color: blue
+            vertical: true
+          - type: tile
+            entity: sensor.lumi_lumi_weather_humidity
+            name: Lounge
+            icon: mdi:sofa
+            color: red
+            vertical: true
+      - type: custom:mini-graph-card
+        height: 200
+        line_width: 3
+        entities:
+          - entity: sensor.lumi_lumi_weather_humidity_3
+            name: "Bedroom"
+            color: cyan
+          - entity: sensor.lumi_lumi_weather_humidity_2
+            name: "Bathroom"
+            color: blue
+          - entity: sensor.lumi_lumi_weather_humidity
+            name: "Lounge"
+            color: red
+          - entity: sun.sun
+            color: pink
+            show_line: false
+            show_points: false
+            show_legend: false
+            y_axis: secondary
+        state_map:
+          - value: "below_horizon"
+          - value: "above_horizon"
+        hours_to_show: 168
+        points_per_hour: 1
+        show:
+          name: false
+          legend: false
+          icon: false
+          labels: true
+          state: false
     view_layout:
-      grid-area: boat_temp
+      grid-area: humidity
   - type: custom:mini-graph-card
-    name: Boat Humidity - 1 week
-    hours_to_show: 168
-    points_per_hour: 0.5
-    animate: true
-    entities:
-      - entity: sensor.lumi_lumi_weather_humidity
-    show:
-      labels: true
-    color_thresholds:
-      - value: 60
-        color: "#ff0000"
-      - value: 55
-        color: "#00ff00"        
-      - value: 35
-        color: "#00ff00"
-      - value: 30
-        color: "#ff0000"
-      - value: 0
-        color: "#ff0000"
-    view_layout:
-      grid-area: boat_humidity
-  - type: custom:mini-graph-card
-    name: Boat Barometer - 1 week
+    name: Barometer - 1 week
+    height: 200
     hours_to_show: 168
     points_per_hour: 0.5
     animate: true
