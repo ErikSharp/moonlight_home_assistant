@@ -13,6 +13,8 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-layout-card/layout-card.js
       type: module
+    - url: /local/text-element.js?v=0
+      type: module
 
 frontend:
   extra_module_url:
