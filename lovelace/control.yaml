@@ -53,14 +53,6 @@ cards:
     entity: light.dinette
     view_layout:
       grid-area: dinette
-  - name: Pendant
-    features:
-      - type: light-brightness
-    type: tile
-    color: accent
-    entity: light.pendant
-    view_layout:
-      grid-area: pendant
   - name: Stern
     features:
       - type: light-brightness
@@ -114,7 +106,7 @@ cards:
       - type: light-brightness
     type: tile
     color: accent
-    entity: light.gunwale
+    entity: light.tzb210_lmqquxus_ts0502b_light
     view_layout:
       grid-area: gunwale
   - name: Engine Bay
@@ -169,6 +161,19 @@ cards:
         entity_id: switch.switch_4
     view_layout:
       grid-area: tunnel
+  - name: Pendant Lamp
+    type: button
+    entity: light.pendant_lamp
+    show_state: true
+    icon: mdi:ceiling-light
+    icon_height: 50px
+    tap_action:
+      action: call-service
+      service: light.toggle
+      data:
+        entity_id: light.pendant_lamp
+    view_layout:
+      grid-area: pendant
   - type: entities
     title: Inverter
     entities:
