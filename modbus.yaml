@@ -84,7 +84,7 @@
       precision: 3
 
 - name: cerbo
-  host: 192.168.1.249
+  host: 192.168.1.6
   type: tcp
   port: 502
 
