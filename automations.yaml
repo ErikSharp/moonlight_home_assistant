@@ -120,7 +120,7 @@
   action:
   - service: light.toggle
     data:
-      brightness: 128
+      brightness_pct: 100
     target:
       entity_id: light.utility
   mode: single
@@ -170,7 +170,7 @@
   action:
   - service: light.toggle
     data:
-      brightness_pct: 50
+      brightness_pct: 100
     target:
       device_id: 947d141dbcc1d7260ad408a60a1ca427
   mode: single
@@ -514,7 +514,7 @@
   trigger:
   - platform: numeric_state
     entity_id: sensor.lumi_lumi_weather_temperature
-    below: 19
+    below: 20
   condition: []
   action:
   - service: light.turn_on
@@ -528,11 +528,73 @@
   trigger:
   - platform: numeric_state
     entity_id: sensor.lumi_lumi_weather_temperature
-    above: 20
+    above: 21
   condition: []
   action:
   - service: light.turn_off
     data: {}
     target:
       entity_id: light.heater_outlet_light_2
+  mode: single
+- id: '1682067773070'
+  alias: Turn on stern lights at sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 0
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+    target:
+      entity_id: light.stern
+  mode: single
+- id: '1682067827614'
+  alias: When the sun rises turn off the stern lights
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 0
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.stern
+  mode: single
+- id: '1682093581137'
+  alias: Table btn toggle pendant
+  description: ''
+  trigger:
+  - device_id: 89da5e22f0c4b539c06843a3cd7b0ef7
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.pendant_lamp
+  mode: single
+- id: '1682094051433'
+  alias: Table btn double click dinette lights
+  description: ''
+  trigger:
+  - device_id: 89da5e22f0c4b539c06843a3cd7b0ef7
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: remote_button_double_press
+  condition: []
+  action:
+  - service: light.toggle
+    data:
+      brightness_pct: 100
+    target:
+      entity_id: light.dinette
   mode: single
