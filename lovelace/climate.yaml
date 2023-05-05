@@ -31,11 +31,12 @@ cards:
   - type: picture-elements
     title: Interior Climate - Last 72 hours
     image: /local/images/BatteryBackground.png
-    aspect_ratio: 92%
+    aspect_ratio: 60%
+    icon: mdi:thermometer
     elements:
       - type: custom:mini-graph-card
-        height: 200
         line_width: 3
+        name: Temperature
         entities:
           - entity: sensor.lumi_lumi_weather_temperature_3
             name: "Bedroom"
@@ -58,19 +59,18 @@ cards:
         hours_to_show: 72
         points_per_hour: 1
         show:
-          name: false
           legend: false
-          icon: false
           labels: true
           state: false
+          points: false
         style:
           transform: none
-          top: 9%
+          top: 14%
           left: 0
           width: 100%
       - type: custom:mini-graph-card
-        height: 200
         line_width: 3
+        name: Humidity
         entities:
           - entity: sensor.lumi_lumi_weather_humidity_3
             name: "Bedroom"
@@ -93,39 +93,24 @@ cards:
         hours_to_show: 72
         points_per_hour: 1
         show:
-          name: false
           legend: false
-          icon: false
           labels: true
           state: false
+          points: false
         style:
           transform: none
           top: 55%
           left: 0
           width: 100%
       - type: icon
-        icon: mdi:thermometer
-        style:
-          left: 50%
-          top: 20%
-          filter: opacity(50%)
-          transform: translate(-50%,-50%) scale(5, 5)
-      - type: icon
-        icon: mdi:cloud-percent
-        style:
-          left: 50%
-          top: 65%
-          filter: opacity(50%)
-          transform: translate(-50%,-50%) scale(5, 5)
-      - type: icon
-        icon: mdi:circle
+        icon: mdi:square-rounded
         style:
           top: 40px
           left: 15%
           color: cyan
           '--mdc-icon-size': 130px
       - type: icon
-        icon: mdi:circle
+        icon: mdi:square-rounded
         style:
           top: 40px
           left: 15%
@@ -160,14 +145,14 @@ cards:
           top: 53px
           left: 15%
       - type: icon
-        icon: mdi:circle
+        icon: mdi:square-rounded
         style:
           top: 40px
           left: 50%
           color: blue
           '--mdc-icon-size': 130px
       - type: icon
-        icon: mdi:circle
+        icon: mdi:square-rounded
         style:
           top: 40px
           left: 50%
@@ -202,14 +187,14 @@ cards:
           top: 53px
           left: 50%
       - type: icon
-        icon: mdi:circle
+        icon: mdi:square-rounded
         style:
           top: 40px
           left: 85%
           color: red
           '--mdc-icon-size': 130px
       - type: icon
-        icon: mdi:circle
+        icon: mdi:square-rounded
         style:
           top: 40px
           left: 85%
