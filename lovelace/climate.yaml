@@ -45,7 +45,7 @@ cards:
       - type: tile
         entity: sensor.lumi_lumi_weather_temperature
         icon: mdi:sofa
-        name: Bedroom
+        name: Lounge
         color: orange
         vertical: true
       - type: tile
