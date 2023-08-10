@@ -20,12 +20,127 @@ layout:
         "erik lynsey"
         "map map"
 cards:
-  - type: picture
-    tap_action:
-      action: none
-    hold_action:
-      action: none
+  - type: picture-elements
+    # tap_action:
+    #   action: none
+    # hold_action:
+    #   action: none
     image: /local/MoonlightVector.png
+    elements:
+      - type: state-icon
+        entity: switch.switch_4
+        state_color: true
+        style:
+          top: 7%
+          left: 6%
+      - type: state-icon
+        entity: switch.switch_3
+        state_color: true
+        style:
+          top: 65%
+          left: 88%
+      - type: state-icon
+        entity: light.stern
+        state_color: true
+        style:
+          top: 42%
+          left: 88%
+      - type: state-icon
+        entity: switch.switch_2
+        state_color: true
+        style:
+          top: 14%
+          left: 84%
+      - type: state-icon
+        entity: light.utility
+        state_color: true
+        style:
+          top: 7%
+          left: 80%
+      - type: state-icon
+        entity: light.galley
+        state_color: true
+        style:
+          top: 7%
+          left: 70%
+      - type: state-icon
+        entity: light.pendant_lamp
+        state_color: true
+        style:
+          top: 7%
+          left: 59%
+      - type: state-icon
+        entity: light.dinette
+        state_color: true
+        style:
+          top: 7%
+          left: 57%
+      - type: state-icon
+        entity: light.gunwale
+        state_color: true
+        style:
+          top: 55%
+          left: 50%
+      - type: state-icon
+        entity: light.lounge_wall
+        state_color: true
+        style:
+          top: 7%
+          left: 46%
+      - type: state-icon
+        entity: light.lounge
+        state_color: true
+        style:
+          top: 7%
+          left: 44%
+      - type: state-icon
+        entity: light.bathroom
+        state_color: true
+        style:
+          top: 7%
+          left: 33%
+      - type: state-icon
+        entity: light.bedroom
+        state_color: true
+        style:
+          top: 7%
+          left: 20%
+      - type: state-icon
+        entity: light.bedroom_wall
+        state_color: true
+        style:
+          top: 7%
+          left: 10%
+      - type: state-label
+        entity: sensor.diesel_tank_level
+        style:
+          top: 65%
+          left: 94%
+      - type: state-label
+        entity: sensor.water_tank_level
+        style:
+          top: 65%
+          left: 10%
+      - type: state-label
+        entity: sensor.lumi_lumi_weather_temperature_3
+        style:
+          top: 65%
+          left: 16%
+      - type: state-label
+        entity: sensor.lumi_lumi_weather_temperature_2
+        style:
+          top: 65%
+          left: 33%
+      - type: state-label
+        entity: sensor.lumi_lumi_weather_temperature
+        style:
+          top: 65%
+          left: 57%
+      - type: state-label
+        entity: sensor.victron_battery_soc
+        style:
+          top: 77%
+          left: 77%
     view_layout:
       grid-area: picture
       show:
