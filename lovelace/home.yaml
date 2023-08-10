@@ -4,12 +4,13 @@ theme: Backend-selected
 icon: mdi:home
 type: custom:grid-layout
 layout:
-  grid-template-columns: auto repeat(8, 10%) auto
+  grid-template-columns: auto repeat(4, 20%) auto
   grid-template-rows: auto
   grid-template-areas: |
-    "picture picture picture picture picture picture picture picture picture picture"
-    ". camera camera camera camera camera camera camera camera ."
-    ". person map map map map map map map ."
+    "picture picture picture picture picture picture"
+    ". camera camera camera camera ."
+    ". . erik lynsey . ."
+    ". map map map map ."
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 50% 50%
@@ -21,10 +22,6 @@ layout:
         "map map"
 cards:
   - type: picture-elements
-    # tap_action:
-    #   action: none
-    # hold_action:
-    #   action: none
     image: /local/MoonlightVector.png
     elements:
       - type: state-icon
@@ -103,7 +100,7 @@ cards:
             entity_id: light.pendant_lamp
         style:
           top: 6%
-          left: 59%
+          left: 60%
       - type: state-icon
         entity: light.dinette
         state_color: true
@@ -114,7 +111,7 @@ cards:
             entity_id: light.dinette
         style:
           top: 6%
-          left: 57%
+          left: 56%
       - type: state-icon
         entity: light.gunwale
         state_color: true
@@ -136,7 +133,7 @@ cards:
             entity_id: light.lounge_wall
         style:
           top: 6%
-          left: 46%
+          left: 47%
       - type: state-icon
         entity: light.lounge
         state_color: true
@@ -147,7 +144,7 @@ cards:
             entity_id: light.lounge
         style:
           top: 6%
-          left: 44%
+          left: 43%
       - type: state-icon
         entity: light.bathroom
         state_color: true
@@ -267,32 +264,12 @@ cards:
     entity: person.erik
     view_layout:
       grid-area: erik
-      place-self: start stretch
-      show:
-        mediaquery: "(max-width: 690px)"
   - type: tile
     name: Lynsey
     show_entity_picture: true
     entity: person.lynsey
     view_layout:
       grid-area: lynsey
-      place-self: start stretch
-      show:
-        mediaquery: "(max-width: 690px)"
-  - type: vertical-stack
-    cards:
-      - type: tile
-        name: Erik
-        show_entity_picture: true
-        entity: person.erik
-      - type: tile
-        name: Lynsey
-        show_entity_picture: true
-        entity: person.lynsey
-    view_layout:
-      grid-area: person
-      show:
-        mediaquery: "(min-width: 691px)"
   - type: map
     aspect_ratio: "16:9"
     default_zoom: 7
