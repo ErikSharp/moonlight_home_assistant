@@ -462,52 +462,6 @@
         value: 3
         hub: cerbo
   mode: single
-- id: '1679986366744'
-  alias: Battery fully charged
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - sensor.victron_battery_state
-    from: '1'
-    to: '0'
-  - platform: state
-    entity_id:
-    - sensor.victron_battery_state
-    from: '1'
-    to: '2'
-  condition:
-  - condition: or
-    conditions:
-    - condition: state
-      entity_id: sensor.victron_inverter
-      state: 'On'
-    - condition: state
-      entity_id: sensor.victron_inverter
-      state: Charger Only
-  - condition: numeric_state
-    entity_id: sensor.victron_battery_soc
-    above: '99'
-  action:
-  - if:
-    - condition: state
-      entity_id: sensor.victron_inverter
-      state: Charger Only
-    then:
-    - service: modbus.write_register
-      data:
-        address: 33
-        slave: 227
-        value: 4
-        hub: cerbo
-    else:
-    - service: modbus.write_register
-      data:
-        address: 33
-        slave: 227
-        value: 2
-        hub: cerbo
-  mode: single
 - id: '1681377294414'
   alias: Turn on electric heater in lounge
   description: ''
@@ -597,4 +551,106 @@
       brightness_pct: 100
     target:
       entity_id: light.dinette
+  mode: single
+- id: '1683645144169'
+  alias: Water filling notification
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.water_tank_level
+    above: 80
+  condition: []
+  action:
+  - service: notify.mobile_app_pixel_6a
+    data:
+      message: The water is at 80%
+      title: Water filling
+  mode: single
+- id: '1683657045046'
+  alias: Btn galley long press off immersion heater
+  description: ''
+  trigger:
+  - device_id: 89a64ef4e6d76c4e62d9c7b1158fc9b9
+    domain: zha
+    platform: device
+    type: remote_button_long_press
+    subtype: remote_button_long_press
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.switch_3
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.switch_3
+  mode: single
+- id: '1683791223703'
+  alias: Immersion heater turn on morning
+  description: Turns on the immersion heater in the morning if the battery charge
+    is enough.
+  trigger:
+  - platform: time
+    at: 05:00:00
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.victron_battery_soc
+    above: 50
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.switch_3
+  mode: single
+- id: '1684257241915'
+  alias: Battery - turn on shore power at sunset
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sun.sun
+    from: above_horizon
+    to: below_horizon
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.victron_battery_soc
+    below: 80
+  action:
+  - service: modbus.write_register
+    data:
+      hub: cerbo
+      address: 33
+      slave: 227
+      value: 3
+  mode: single
+- id: '1684257405795'
+  alias: Battery - turn off shore an hour after sunrise
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sun.sun
+    from: below_horizon
+    to: above_horizon
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.victron_battery_soc
+    above: 90
+  action:
+  - service: modbus.write_register
+    data:
+      hub: cerbo
+      address: 33
+      slave: 227
+      value: 2
   mode: single
