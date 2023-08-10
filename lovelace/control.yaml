@@ -139,7 +139,7 @@ cards:
     type: button
     entity: switch.switch_3
     show_state: true
-    icon: mdi:hot-tub
+    icon: mdi:water-thermometer
     icon_height: 50px
     tap_action:
       action: call-service
