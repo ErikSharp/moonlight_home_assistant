@@ -106,7 +106,7 @@ cards:
       - type: light-brightness
     type: tile
     color: accent
-    entity: light.tzb210_lmqquxus_ts0502b_light
+    entity: light.gunwale
     view_layout:
       grid-area: gunwale
   - name: Engine Bay
