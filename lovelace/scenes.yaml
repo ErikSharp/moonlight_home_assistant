@@ -35,7 +35,7 @@ cards:
       action: call-service
       service: script.turn_on
       target:
-        entity_id: script.scene_tunnel
+        entity_id: script.tunnel
     view_layout:
       grid-area: tunnel
   - name: Interior Off

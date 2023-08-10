@@ -1,4 +1,4 @@
-scene_tv:
+tunnel:
   description: Set the lighting to go through a tunnel
   icon: mdi:tunnel
   sequence:
