@@ -7,8 +7,8 @@ layout:
   grid-template-columns: repeat (12, 1fr)
   grid-template-rows: auto
   grid-template-areas: |
-    ". . . test test test test test test . . ."
     ". . . temps temps temps temps temps temps . . ."
+    ". . . temp_hist temp_hist temp_hist temp_hist temp_hist temp_hist . . ."
     ". . . humidity humidity humidity humidity humidity humidity . . ."
     ". . . boat_pressure boat_pressure boat_pressure boat_pressure boat_pressure boat_pressure . . ."
     ". . . forecast forecast forecast forecast forecast forecast . . ."
@@ -17,8 +17,8 @@ layout:
     "(max-width: 690px)":
       grid-template-columns: 9fr 1fr
       grid-template-areas: |
-        "test test"
         "temps temps"
+        "temp_hist temp_hist"
         "humidity humidity"
         "boat_temp boat_temp"
         "boat_humidity boat_humidity"
@@ -28,260 +28,108 @@ layout:
         "wind ."
 badges: []
 cards:
-  - type: picture-elements
-    title: Climate - Last 72 hours
-    image: /local/images/BatteryBackground.png
-    aspect_ratio: 60%
-    icon: mdi:thermometer
-    elements:
-      - type: custom:mini-graph-card
-        line_width: 3
-        name: Temperature
-        entities:
-          - entity: sensor.lumi_lumi_weather_temperature_3
-            name: "Bedroom"
-            color: red
-          - entity: sensor.lumi_lumi_weather_temperature_2
-            name: "Bathroom"
-            color: blue
-          - entity: sensor.lumi_lumi_weather_temperature
-            name: "Lounge"
-            color: orange
-          - entity: sensor.lumi_lumi_weather_temperature_4
-            name: "Outside"
-            color: lime
-          - entity: sun.sun
-            color: pink
-            show_line: false
-            show_points: false
-            show_legend: false
-            y_axis: secondary
-        state_map:
-          - value: "below_horizon"
-          - value: "above_horizon"
-        hours_to_show: 72
-        points_per_hour: 1
-        show:
-          legend: false
-          labels: true
-          state: false
-          points: false
-        style:
-          transform: none
-          top: 14%
-          left: 0
-          width: 100%
-      - type: custom:mini-graph-card
-        line_width: 3
-        name: Humidity
-        entities:
-          - entity: sensor.lumi_lumi_weather_humidity_3
-            name: "Bedroom"
-            color: red
-          - entity: sensor.lumi_lumi_weather_humidity_2
-            name: "Bathroom"
-            color: blue
-          - entity: sensor.lumi_lumi_weather_humidity
-            name: "Lounge"
-            color: orange
-          - entity: sensor.lumi_lumi_weather_humidity_4
-            name: "Outside"
-            color: lime
-          - entity: sun.sun
-            color: pink
-            show_line: false
-            show_points: false
-            show_legend: false
-            y_axis: secondary
-        state_map:
-          - value: "below_horizon"
-          - value: "above_horizon"
-        hours_to_show: 72
-        points_per_hour: 1
-        show:
-          legend: false
-          labels: true
-          state: false
-          points: false
-        style:
-          transform: none
-          top: 55%
-          left: 0
-          width: 100%
-      - type: icon
-        icon: mdi:square-rounded
-        style:
-          top: 40px
-          left: 10%
-          color: red
-          '--mdc-icon-size': 130px
-      - type: icon
-        icon: mdi:square-rounded
-        style:
-          top: 40px
-          left: 10%
-          color: red
-          filter: brightness(50%)
-          '--mdc-icon-size': 120px
-      - type: icon
-        icon: mdi:bed
-        style:
-          transform: translate(-50%, 0)
-          top: -5px
-          left: 10%
-          color: red
-      - type: custom:text-element
-        text: "Bedroom"
-        style:
-          transform: translate(-50%, 0)
-          font-size: 15px
-          font-weight: bold
-          top: 20px
-          left: 10%
-      - type: state-label
+  - type: horizontal-stack
+    cards:
+      - type: tile
         entity: sensor.lumi_lumi_weather_temperature_3
-        style:
-          transform: translate(-50%, 0)
-          top: 33px
-          left: 10%
-      - type: state-label
-        entity: sensor.lumi_lumi_weather_humidity_3
-        style:
-          transform: translate(-50%, 0)
-          top: 53px
-          left: 10%
-      - type: icon
-        icon: mdi:square-rounded
-        style:
-          top: 40px
-          left: 35%
-          color: blue
-          '--mdc-icon-size': 130px
-      - type: icon
-        icon: mdi:square-rounded
-        style:
-          top: 40px
-          left: 35%
-          color: blue
-          filter: brightness(50%)
-          '--mdc-icon-size': 120px
-      - type: icon
-        icon: mdi:shower-head
-        style:
-          transform: translate(-50%, 0)
-          top: -5px
-          left: 35%
-          color: blue
-      - type: custom:text-element
-        text: "Bathroom"
-        style:
-          transform: translate(-50%, 0)
-          font-size: 15px
-          font-weight: bold
-          top: 20px
-          left: 35%
-      - type: state-label
+        icon: mdi:bed
+        name: Bedroom
+        color: "#ff0000"
+        vertical: true
+      - type: tile
         entity: sensor.lumi_lumi_weather_temperature_2
-        style:
-          transform: translate(-50%, 0)
-          top: 33px
-          left: 35%
-      - type: state-label
-        entity: sensor.lumi_lumi_weather_humidity_2
-        style:
-          transform: translate(-50%, 0)
-          top: 53px
-          left: 35%
-      - type: icon
-        icon: mdi:square-rounded
-        style:
-          top: 40px
-          left: 65%
-          color: orange
-          '--mdc-icon-size': 130px
-      - type: icon
-        icon: mdi:square-rounded
-        style:
-          top: 40px
-          left: 65%
-          color: orange
-          filter: brightness(50%)
-          '--mdc-icon-size': 120px
-      - type: icon
-        icon: mdi:sofa
-        style:
-          transform: translate(-50%, 0)
-          top: -5px
-          left: 65%
-          color: orange
-      - type: custom:text-element
-        text: "Lounge"
-        style:
-          transform: translate(-50%, 0)
-          font-size: 15px
-          font-weight: bold
-          top: 20px
-          left: 65%
-      - type: state-label
+        icon: mdi:shower-head
+        name: Bathroom
+        color: "#4444ff"
+        vertical: true
+      - type: tile
         entity: sensor.lumi_lumi_weather_temperature
-        style:
-          transform: translate(-50%, 0)
-          top: 33px
-          left: 65%
-      - type: state-label
-        entity: sensor.lumi_lumi_weather_humidity
-        style:
-          transform: translate(-50%, 0)
-          top: 53px
-          left: 65%
-      - type: icon
-        icon: mdi:square-rounded
-        style:
-          top: 40px
-          left: 90%
-          color: lime
-          '--mdc-icon-size': 130px
-      - type: icon
-        icon: mdi:square-rounded
-        style:
-          top: 40px
-          left: 90%
-          color: lime
-          filter: brightness(50%)
-          '--mdc-icon-size': 120px
-      - type: icon
-        icon: mdi:tree
-        style:
-          transform: translate(-50%, 0)
-          top: -5px
-          left: 90%
-          color: lime
-      - type: custom:text-element
-        text: "Outside"
-        style:
-          transform: translate(-50%, 0)
-          font-size: 15px
-          font-weight: bold
-          top: 20px
-          left: 90%
-      - type: state-label
+        icon: mdi:sofa
+        name: Bedroom
+        color: orange
+        vertical: true
+      - type: tile
         entity: sensor.lumi_lumi_weather_temperature_4
-        style:
-          transform: translate(-50%, 0)
-          top: 33px
-          left: 90%
-      - type: state-label
-        entity: sensor.lumi_lumi_weather_humidity_4
-        style:
-          transform: translate(-50%, 0)
-          top: 53px
-          left: 90%
+        icon: mdi:tree
+        name: Outside
+        color: "#00ff00"
+        vertical: true
     view_layout:
-      grid-area: test
+      grid-area: temps
   - type: custom:mini-graph-card
-    name: Barometer - 1 week
-    height: 200
-    hours_to_show: 168
+    height: 150
+    line_width: 3
+    name: Temperature - 72 hours
+    entities:
+      - entity: sensor.lumi_lumi_weather_temperature_3
+        name: "Bedroom"
+        color: red
+      - entity: sensor.lumi_lumi_weather_temperature_2
+        name: "Bathroom"
+        color: blue
+      - entity: sensor.lumi_lumi_weather_temperature
+        name: "Lounge"
+        color: orange
+      - entity: sensor.lumi_lumi_weather_temperature_4
+        name: "Outside"
+        color: lime
+      - entity: sun.sun
+        color: pink
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    state_map:
+      - value: "below_horizon"
+      - value: "above_horizon"
+    hours_to_show: 72
+    points_per_hour: 1
+    show:
+      legend: false
+      labels: true
+      state: false
+      points: false
+    view_layout:
+      grid-area: temp_hist
+  - type: custom:mini-graph-card
+    height: 150
+    line_width: 3
+    name: Humidity - 72 hours
+    entities:
+      - entity: sensor.lumi_lumi_weather_humidity_3
+        name: "Bedroom"
+        color: red
+      - entity: sensor.lumi_lumi_weather_humidity_2
+        name: "Bathroom"
+        color: blue
+      - entity: sensor.lumi_lumi_weather_humidity
+        name: "Lounge"
+        color: orange
+      - entity: sensor.lumi_lumi_weather_humidity_4
+        name: "Outside"
+        color: lime
+      - entity: sun.sun
+        color: pink
+        show_line: false
+        show_points: false
+        show_legend: false
+        y_axis: secondary
+    state_map:
+      - value: "below_horizon"
+      - value: "above_horizon"
+    hours_to_show: 72
+    points_per_hour: 1
+    show:
+      legend: false
+      labels: true
+      state: false
+      points: false
+    view_layout:
+      grid-area: humidity
+  - type: custom:mini-graph-card
+    name: Barometer - 10 days
+    height: 150
+    hours_to_show: 240
     points_per_hour: 0.5
     animate: true
     entities:
