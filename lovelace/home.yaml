@@ -47,6 +47,17 @@ cards:
           top: 65%
           left: 88%
       - type: state-icon
+        entity: switch.switch_1
+        state_color: true
+        tap_action:
+          action: call-service
+          service: switch.toggle
+          target:
+            entity_id: switch.switch_1
+        style:
+          top: 75%
+          left: 91%
+      - type: state-icon
         entity: light.stern
         state_color: true
         tap_action:
