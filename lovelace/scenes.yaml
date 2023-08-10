@@ -5,19 +5,17 @@ icon: mdi:tune-vertical
 type: custom:grid-layout
 layout:
   grid-template-columns: repeat (4, 1fr)
-  grid-template-rows: repeat(1, 125px)
   grid-template-areas: |
-    "tv int_off . ."
+    "tv int_off tunnel ."
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 50% 50%
-      grid-template-rows: repeat(1, 125px)
       grid-template-areas: |
         "tv int_off"
+        "tunnel ."
 cards:
   - name: TV
     type: button
-    entity: script.scene_tv
     show_state: false
     icon: mdi:television
     icon_height: 50px
@@ -28,9 +26,20 @@ cards:
         entity_id: script.scene_tv
     view_layout:
       grid-area: tv
+  - name: Tunnel
+    type: button
+    show_state: false
+    icon: mdi:tunnel
+    icon_height: 50px
+    tap_action:
+      action: call-service
+      service: script.turn_on
+      target:
+        entity_id: script.scene_tunnel
+    view_layout:
+      grid-area: tunnel
   - name: Interior Off
     type: button
-    entity: script.interior_off
     show_state: false
     icon: mdi:lightbulb-multiple-off
     icon_height: 50px
