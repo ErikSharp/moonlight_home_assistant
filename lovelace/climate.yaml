@@ -29,7 +29,7 @@ layout:
 badges: []
 cards:
   - type: picture-elements
-    title: Interior Climate - Last 72 hours
+    title: Climate - Last 72 hours
     image: /local/images/BatteryBackground.png
     aspect_ratio: 60%
     icon: mdi:thermometer
@@ -40,13 +40,16 @@ cards:
         entities:
           - entity: sensor.lumi_lumi_weather_temperature_3
             name: "Bedroom"
-            color: cyan
+            color: red
           - entity: sensor.lumi_lumi_weather_temperature_2
             name: "Bathroom"
             color: blue
           - entity: sensor.lumi_lumi_weather_temperature
             name: "Lounge"
-            color: red
+            color: orange
+          - entity: sensor.lumi_lumi_weather_temperature_4
+            name: "Outside"
+            color: lime
           - entity: sun.sun
             color: pink
             show_line: false
@@ -74,13 +77,16 @@ cards:
         entities:
           - entity: sensor.lumi_lumi_weather_humidity_3
             name: "Bedroom"
-            color: cyan
+            color: red
           - entity: sensor.lumi_lumi_weather_humidity_2
             name: "Bathroom"
             color: blue
           - entity: sensor.lumi_lumi_weather_humidity
             name: "Lounge"
-            color: red
+            color: orange
+          - entity: sensor.lumi_lumi_weather_humidity_4
+            name: "Outside"
+            color: lime
           - entity: sun.sun
             color: pink
             show_line: false
@@ -106,15 +112,15 @@ cards:
         icon: mdi:square-rounded
         style:
           top: 40px
-          left: 15%
-          color: cyan
+          left: 10%
+          color: red
           '--mdc-icon-size': 130px
       - type: icon
         icon: mdi:square-rounded
         style:
           top: 40px
-          left: 15%
-          color: cyan
+          left: 10%
+          color: red
           filter: brightness(50%)
           '--mdc-icon-size': 120px
       - type: icon
@@ -122,8 +128,8 @@ cards:
         style:
           transform: translate(-50%, 0)
           top: -5px
-          left: 15%
-          color: cyan
+          left: 10%
+          color: red
       - type: custom:text-element
         text: "Bedroom"
         style:
@@ -131,31 +137,31 @@ cards:
           font-size: 15px
           font-weight: bold
           top: 20px
-          left: 15%
+          left: 10%
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature_3
         style:
           transform: translate(-50%, 0)
           top: 33px
-          left: 15%
+          left: 10%
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity_3
         style:
           transform: translate(-50%, 0)
           top: 53px
-          left: 15%
+          left: 10%
       - type: icon
         icon: mdi:square-rounded
         style:
           top: 40px
-          left: 50%
+          left: 35%
           color: blue
           '--mdc-icon-size': 130px
       - type: icon
         icon: mdi:square-rounded
         style:
           top: 40px
-          left: 50%
+          left: 35%
           color: blue
           filter: brightness(50%)
           '--mdc-icon-size': 120px
@@ -164,7 +170,7 @@ cards:
         style:
           transform: translate(-50%, 0)
           top: -5px
-          left: 50%
+          left: 35%
           color: blue
       - type: custom:text-element
         text: "Bathroom"
@@ -173,32 +179,32 @@ cards:
           font-size: 15px
           font-weight: bold
           top: 20px
-          left: 50%
+          left: 35%
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature_2
         style:
           transform: translate(-50%, 0)
           top: 33px
-          left: 50%
+          left: 35%
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity_2
         style:
           transform: translate(-50%, 0)
           top: 53px
-          left: 50%
+          left: 35%
       - type: icon
         icon: mdi:square-rounded
         style:
           top: 40px
-          left: 85%
-          color: red
+          left: 65%
+          color: orange
           '--mdc-icon-size': 130px
       - type: icon
         icon: mdi:square-rounded
         style:
           top: 40px
-          left: 85%
-          color: red
+          left: 65%
+          color: orange
           filter: brightness(50%)
           '--mdc-icon-size': 120px
       - type: icon
@@ -206,8 +212,8 @@ cards:
         style:
           transform: translate(-50%, 0)
           top: -5px
-          left: 85%
-          color: red
+          left: 65%
+          color: orange
       - type: custom:text-element
         text: "Lounge"
         style:
@@ -215,19 +221,61 @@ cards:
           font-size: 15px
           font-weight: bold
           top: 20px
-          left: 85%
+          left: 65%
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature
         style:
           transform: translate(-50%, 0)
           top: 33px
-          left: 85%
+          left: 65%
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity
         style:
           transform: translate(-50%, 0)
           top: 53px
-          left: 85%
+          left: 65%
+      - type: icon
+        icon: mdi:square-rounded
+        style:
+          top: 40px
+          left: 90%
+          color: lime
+          '--mdc-icon-size': 130px
+      - type: icon
+        icon: mdi:square-rounded
+        style:
+          top: 40px
+          left: 90%
+          color: lime
+          filter: brightness(50%)
+          '--mdc-icon-size': 120px
+      - type: icon
+        icon: mdi:tree
+        style:
+          transform: translate(-50%, 0)
+          top: -5px
+          left: 90%
+          color: lime
+      - type: custom:text-element
+        text: "Outside"
+        style:
+          transform: translate(-50%, 0)
+          font-size: 15px
+          font-weight: bold
+          top: 20px
+          left: 90%
+      - type: state-label
+        entity: sensor.lumi_lumi_weather_temperature_4
+        style:
+          transform: translate(-50%, 0)
+          top: 33px
+          left: 90%
+      - type: state-label
+        entity: sensor.lumi_lumi_weather_humidity_4
+        style:
+          transform: translate(-50%, 0)
+          top: 53px
+          left: 90%
     view_layout:
       grid-area: test
   - type: custom:mini-graph-card
