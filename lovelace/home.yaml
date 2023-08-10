@@ -55,25 +55,25 @@ cards:
         entity: light.utility
         state_color: true
         style:
-          top: 7%
+          top: 6%
           left: 80%
       - type: state-icon
         entity: light.galley
         state_color: true
         style:
-          top: 7%
+          top: 6%
           left: 70%
       - type: state-icon
         entity: light.pendant_lamp
         state_color: true
         style:
-          top: 7%
+          top: 6%
           left: 59%
       - type: state-icon
         entity: light.dinette
         state_color: true
         style:
-          top: 7%
+          top: 6%
           left: 57%
       - type: state-icon
         entity: light.gunwale
@@ -85,31 +85,31 @@ cards:
         entity: light.lounge_wall
         state_color: true
         style:
-          top: 7%
+          top: 6%
           left: 46%
       - type: state-icon
         entity: light.lounge
         state_color: true
         style:
-          top: 7%
+          top: 6%
           left: 44%
       - type: state-icon
         entity: light.bathroom
         state_color: true
         style:
-          top: 7%
+          top: 6%
           left: 33%
       - type: state-icon
         entity: light.bedroom
         state_color: true
         style:
-          top: 7%
+          top: 6%
           left: 20%
       - type: state-icon
         entity: light.bedroom_wall
         state_color: true
         style:
-          top: 7%
+          top: 6%
           left: 10%
       - type: state-label
         entity: sensor.diesel_tank_level
@@ -136,6 +136,11 @@ cards:
         style:
           top: 65%
           left: 57%
+      - type: state-label
+        entity: sensor.lumi_lumi_weather_temperature_4
+        style:
+          top: 28%
+          left: 94%
       - type: state-label
         entity: sensor.victron_battery_soc
         style:
