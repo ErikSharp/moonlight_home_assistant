@@ -36,6 +36,17 @@ cards:
           top: 7%
           left: 6%
       - type: state-icon
+        entity: light.bowcam_floodlight
+        state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.bowcam_floodlight
+        style:
+          top: 30%
+          left: 4%
+      - type: state-icon
         entity: switch.switch_3
         state_color: true
         tap_action:
@@ -78,7 +89,7 @@ cards:
             entity_id: switch.switch_2
         style:
           top: 14%
-          left: 84%
+          left: 85%
       - type: state-icon
         entity: light.utility
         state_color: true
