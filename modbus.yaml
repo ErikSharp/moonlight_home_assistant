@@ -234,7 +234,7 @@
       unit_of_measurement: "%"
     - name: "Water Tank Level"
       unique_id: "84c82c82-bbc0-4653-95c1-28a9245b1b14"
-      scan_interval: 300
+      scan_interval: 120
       slave: 21
       address: 3004
       data_type: uint16
