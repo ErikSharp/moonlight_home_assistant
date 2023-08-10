@@ -30,84 +30,154 @@ cards:
       - type: state-icon
         entity: switch.switch_4
         state_color: true
+        tap_action:
+          action: call-service
+          service: switch.toggle
+          target:
+            entity_id: switch.switch_4
         style:
           top: 7%
           left: 6%
       - type: state-icon
         entity: switch.switch_3
         state_color: true
+        tap_action:
+          action: call-service
+          service: switch.toggle
+          target:
+            entity_id: switch.switch_3
         style:
           top: 65%
           left: 88%
       - type: state-icon
         entity: light.stern
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.stern
         style:
           top: 42%
           left: 88%
       - type: state-icon
         entity: switch.switch_2
         state_color: true
+        tap_action:
+          action: call-service
+          service: switch.toggle
+          target:
+            entity_id: switch.switch_2
         style:
           top: 14%
           left: 84%
       - type: state-icon
         entity: light.utility
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.utility
         style:
           top: 6%
           left: 80%
       - type: state-icon
         entity: light.galley
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.galley
         style:
           top: 6%
           left: 70%
       - type: state-icon
         entity: light.pendant_lamp
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.pendant_lamp
         style:
           top: 6%
           left: 59%
       - type: state-icon
         entity: light.dinette
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.dinette
         style:
           top: 6%
           left: 57%
       - type: state-icon
         entity: light.gunwale
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.gunwale
         style:
           top: 55%
           left: 50%
       - type: state-icon
         entity: light.lounge_wall
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.lounge_wall
         style:
           top: 6%
           left: 46%
       - type: state-icon
         entity: light.lounge
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.lounge
         style:
           top: 6%
           left: 44%
       - type: state-icon
         entity: light.bathroom
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.bathroom
         style:
           top: 6%
           left: 33%
       - type: state-icon
         entity: light.bedroom
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.bedroom
         style:
           top: 6%
           left: 20%
       - type: state-icon
         entity: light.bedroom_wall
         state_color: true
+        tap_action:
+          action: call-service
+          service: light.toggle
+          target:
+            entity_id: light.bedroom_wall
         style:
           top: 6%
           left: 10%
