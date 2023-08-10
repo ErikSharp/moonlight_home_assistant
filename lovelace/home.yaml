@@ -4,12 +4,12 @@ theme: Backend-selected
 icon: mdi:home
 type: custom:grid-layout
 layout:
-  grid-template-columns: auto repeat(4, 20%) auto
+  grid-template-columns: auto repeat(8, 10%) auto
   grid-template-rows: auto
   grid-template-areas: |
-    "picture picture picture picture picture picture"
-    ". camera camera camera camera ."
-    ". person map map map ."
+    "picture picture picture picture picture picture picture picture picture picture"
+    ". camera camera camera camera camera camera camera camera ."
+    ". person map map map map map map map ."
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 50% 50%
@@ -295,7 +295,7 @@ cards:
         mediaquery: "(min-width: 691px)"
   - type: map
     aspect_ratio: "16:9"
-    default_zoom: 6
+    default_zoom: 7
     entities:
       - entity: person.erik
       - entity: person.lynsey
