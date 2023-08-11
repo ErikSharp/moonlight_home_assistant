@@ -56,7 +56,7 @@ cards:
             entity_id: switch.switch_3
         style:
           top: 65%
-          left: 88%
+          left: 85%
       - type: state-icon
         entity: switch.switch_1
         state_color: true
@@ -67,7 +67,7 @@ cards:
             entity_id: switch.switch_1
         style:
           top: 75%
-          left: 91%
+          left: 90%
       - type: state-icon
         entity: light.stern
         state_color: true
@@ -205,11 +205,25 @@ cards:
         style:
           top: 65%
           left: 94%
+      - type: icon
+        icon: mdi:fuel
+        style:
+          top: 65%
+          left: 94%
+          transform: translate(-50%, -50%) translateX(25px)
+          color: red
       - type: state-label
         entity: sensor.water_tank_level
         style:
           top: 65%
           left: 10%
+      - type: icon
+        icon: mdi:water-percent
+        style:
+          top: 65%
+          left: 10%
+          transform: translate(-50%, -50%) translateX(25px)
+          color: blue
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature_3
         style:
@@ -235,6 +249,13 @@ cards:
         style:
           top: 77%
           left: 77%
+      - type: icon
+        icon: mdi:battery-70
+        style:
+          top: 77%
+          left: 77%
+          transform: translate(-50%, -50%) translateX(25px)
+          color: lime
     view_layout:
       grid-area: picture
       show:
