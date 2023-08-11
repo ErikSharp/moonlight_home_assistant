@@ -228,7 +228,7 @@ cards:
         entity: sensor.lumi_lumi_weather_temperature_3
         style:
           top: 65%
-          left: 16%
+          left: 18%
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature_2
         style:
