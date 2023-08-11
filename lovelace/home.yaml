@@ -47,6 +47,18 @@ cards:
           top: 30%
           left: 4%
       - type: state-icon
+        entity: switch.bowcam_record
+        icon: mdi:cctv
+        state_color: true
+        tap_action:
+          action: call-service
+          service: switch.toggle
+          target:
+            entity_id: switch.bowcam_record
+        style:
+          top: 10%
+          left: 1.5%
+      - type: state-icon
         entity: switch.switch_3
         state_color: true
         tap_action:
