@@ -289,7 +289,7 @@ cards:
   - type: picture-elements
     image: nothing
     camera_view: auto
-    camera_image: camera.bowcam_sub
+    camera_image: camera.bowcam_snapshots_sub
     elements:
       - type: state-icon
         entity: switch.switch_4
@@ -320,7 +320,7 @@ cards:
   - type: picture-elements
     image: nothing
     camera_view: auto
-    camera_image: camera.sterncam_sub
+    camera_image: camera.sterncam_snapshots_sub
     elements:
       - type: state-icon
         entity: binary_sensor.sterncam_motion
@@ -340,13 +340,13 @@ cards:
       grid-area: sterncam
   - type: conditional
     conditions:
-      - entity: camera.internal_sub
+      - entity: camera.internal_snapshots_main
         state_not: "unavailable"
     card:
       type: picture-elements
       image: nothing
       camera_view: auto
-      camera_image: camera.internal_sub
+      camera_image: camera.internal_snapshots_main
       elements:
         - type: state-icon
           entity: binary_sensor.internal_motion
