@@ -6,13 +6,13 @@ type: custom:grid-layout
 layout:
   grid-template-columns: repeat (4, 1fr)
   grid-template-areas: |
-    "tv int_off tunnel ."
+    "tv bedtime int_off tunnel"
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 50% 50%
       grid-template-areas: |
-        "tv int_off"
-        "tunnel ."
+        "tv bedtime"
+        "int_off tunnel"
 cards:
   - name: TV
     type: button
@@ -50,3 +50,15 @@ cards:
         entity_id: script.interior_off
     view_layout:
       grid-area: int_off
+  - name: Bedtime
+    type: button
+    show_state: false
+    icon: mdi:bed
+    icon_height: 50px
+    tap_action:
+      action: call-service
+      service: script.turn_on
+      target:
+        entity_id: script.bedtime
+    view_layout:
+      grid-area: bedtime
