@@ -7,7 +7,7 @@ layout:
   grid-template-columns: repeat (4, 1fr)
   grid-template-rows: repeat(5, 125px) 200px
   grid-template-areas: |
-    ". immersion . ."
+    ". immersion heater ."
     "stern stern_omni engine utility"
     "galley dinette pendant gunwale"
     ". lounge lounge_wall ." 
@@ -18,7 +18,7 @@ layout:
       grid-template-columns: 50% 50%
       grid-template-rows: repeat(8, 125px) 200px
       grid-template-areas: |
-        "immersion ."
+        "immersion heater"
         "stern stern_omni"
         "engine utility"
         "galley dinette"
@@ -148,6 +148,19 @@ cards:
         entity_id: switch.switch_3
     view_layout:
       grid-area: immersion
+  - name: Heater Socket
+    type: button
+    entity: light.heater_outlet_light_2
+    show_state: true
+    icon: mdi:radiator
+    icon_height: 50px
+    tap_action:
+      action: call-service
+      service: light.toggle
+      data:
+        entity_id: light.heater_outlet_light_2
+    view_layout:
+      grid-area: heater
   - name: Tunnel Light
     type: button
     entity: switch.switch_4
