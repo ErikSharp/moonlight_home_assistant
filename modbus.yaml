@@ -9,7 +9,6 @@
       scan_interval: 120
       slave: 1
       address: 3
-      count: 2
       data_type: int32
       device_class: signal_strength
       unit_of_measurement: "dBm"
@@ -18,7 +17,6 @@
       scan_interval: 120
       slave: 1
       address: 5
-      count: 2
       data_type: int32
       scale: 0.1
       device_class: temperature
@@ -28,7 +26,6 @@
       scan_interval: 600
       slave: 1
       address: 185
-      count: 2
       data_type: uint32
       state_class: total_increasing
       device_class: data_size
@@ -38,7 +35,6 @@
       scan_interval: 600
       slave: 1
       address: 187
-      count: 2
       data_type: uint32
       state_class: total_increasing
       device_class: data_size
@@ -48,7 +44,6 @@
       scan_interval: 30
       slave: 1
       address: 179
-      count: 2
       data_type: float32
       precision: 3
     - name: "RUT955 GPS satellite count"
@@ -56,14 +51,12 @@
       scan_interval: 300
       slave: 1
       address: 181
-      count: 2
       data_type: uint32
     - name: "RUT955 GPS accuracy"
       unique_id: "ae3532eb-908e-4fd2-9567-3e0198654b59"
       scan_interval: 300
       slave: 1
       address: 183
-      count: 2
       data_type: float32
       precision: 3
     - name: "RUT955 GPS latitude coordinate"
@@ -71,7 +64,6 @@
       scan_interval: 30
       slave: 1
       address: 143
-      count: 2
       data_type: float32
       precision: 3
     - name: "RUT955 GPS longitude coordinate"
@@ -79,7 +71,6 @@
       scan_interval: 30
       slave: 1
       address: 145
-      count: 2
       data_type: float32
       precision: 3
 
