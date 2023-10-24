@@ -4,16 +4,24 @@ theme: Backend-selected
 icon: mdi:tune-vertical
 type: custom:grid-layout
 layout:
-  grid-template-columns: repeat (4, 1fr)
+  grid-template-columns: repeat (8, 1fr)
   grid-template-areas: |
-    "tv bedtime int_off tunnel"
+    ". . . mode mode . . ."
+    "tv tv bedtime bedtime int_off int_off tunnel tunnel"
   mediaquery:
     "(max-width: 690px)":
       grid-template-columns: 50% 50%
       grid-template-areas: |
+        "mode mode"
         "tv bedtime"
         "int_off tunnel"
 cards:
+  - name: Scene Exclusive Mode
+    type: button
+    entity: input_boolean.scene_exclusive_mode
+    icon_height: 40px
+    view_layout:
+      grid-area: mode
   - name: TV
     type: button
     show_state: false

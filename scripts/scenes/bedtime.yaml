@@ -17,3 +17,27 @@ bedtime:
         brightness_pct: 25
       target:
         entity_id: light.bedroom_wall
+    - condition: state
+      entity_id: input_boolean.scene_exclusive_mode
+      state: "on"
+    - service: light.turn_off
+      target:
+        entity_id: light.utility
+    - service: light.turn_off
+      target:
+        entity_id: light.galley
+    - service: light.turn_off
+      target:
+        entity_id: light.pendant_lamp
+    - service: light.turn_off
+      target:
+        entity_id: light.dinette
+    - service: light.turn_off
+      target:
+        entity_id: light.lounge
+    - service: light.turn_off
+      target:
+        entity_id: light.lounge_wall
+    - service: light.turn_off
+      target:
+        entity_id: light.gunwale
