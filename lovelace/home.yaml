@@ -248,7 +248,7 @@ cards:
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity_3
         style:
-          top: 71%
+          top: 73%
           left: 18%
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature_2
@@ -258,7 +258,7 @@ cards:
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity_2
         style:
-          top: 71%
+          top: 73%
           left: 33%
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature
@@ -268,7 +268,7 @@ cards:
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity
         style:
-          top: 71%
+          top: 73%
           left: 57%
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature_4
@@ -278,20 +278,25 @@ cards:
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity_4
         style:
-          top: 33%
+          top: 35%
           left: 93%
       - type: state-label
         entity: sensor.victron_battery_soc
         style:
-          top: 77%
+          top: 65%
           left: 77%
       - type: icon
         icon: mdi:battery-70
         style:
-          top: 77%
+          top: 65%
           left: 77%
           transform: translate(-50%, -50%) translateX(25px)
           color: lime
+      - type: state-label
+        entity: sensor.victron_battery_power
+        style:
+          top: 73%
+          left: 77%
     view_layout:
       grid-area: picture
       show:
