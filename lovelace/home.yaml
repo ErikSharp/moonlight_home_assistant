@@ -74,6 +74,12 @@ cards:
           top: 65%
           left: 85%
       - type: state-icon
+        entity: binary_sensor.sensor_engine_bay_water_moisture
+        state_color: true
+        style:
+          top: 83%
+          left: 85%
+      - type: state-icon
         entity: switch.switch_1
         state_color: true
         tap_action:
@@ -248,7 +254,7 @@ cards:
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity_3
         style:
-          top: 73%
+          top: 83%
           left: 18%
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature_2
@@ -258,7 +264,7 @@ cards:
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity_2
         style:
-          top: 73%
+          top: 83%
           left: 33%
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature
@@ -268,7 +274,7 @@ cards:
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity
         style:
-          top: 73%
+          top: 83%
           left: 57%
       - type: state-label
         entity: sensor.lumi_lumi_weather_temperature_4
@@ -278,7 +284,7 @@ cards:
       - type: state-label
         entity: sensor.lumi_lumi_weather_humidity_4
         style:
-          top: 35%
+          top: 45%
           left: 93%
       - type: state-label
         entity: sensor.victron_battery_soc
@@ -295,7 +301,7 @@ cards:
       - type: state-label
         entity: sensor.victron_battery_power
         style:
-          top: 73%
+          top: 83%
           left: 77%
     view_layout:
       grid-area: picture
